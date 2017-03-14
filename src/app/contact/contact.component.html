@@ -1,10 +1,34 @@
-<h2>Contact Fiouse</h2>
-<div>
-  <p>Phone: 555 555 0297</p>
-  <p>Send an email!</p>
-  <input id="subject" type="text" placeholder="Subject" />
-  <br>
-  <textarea id="content" cols="40" rows="5" placeholder="Text"></textarea>
-  <br>
-  <button id="send_email">Send Email</button>
-</div>
+<h2>Contact Us</h2>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <h3>Interested in signing up with Fiouse?</h3>
+  <p>Please enter your information below, and we will contact you shortly.</p>
+  Company: <input type="text"
+                  name="company"
+                  id="company"
+                  [(ngModel)]="contact.company"                  
+                  required><br>
+  Name of Contact: <input type="text"
+                          name="name"
+                          id="name"
+                          [(ngModel)]="contact.name"                                  
+                          required><br>
+  Contact's Phone: <input type="text"
+                          name="phone"
+                          id="phone"
+                          [(ngModel)]="contact.phone"
+                          required><br>
+  Contact's Email: <input type="text"
+                          name="email"
+                          id="email"
+                          pattern=".+@.+"
+                          [(ngModel)]="contact.email"
+                          required><br>
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="!f.valid">Submit</button>
+  <hr>
+  <p>Alternatively, you may contact us.</p>
+  <p>Phone: 029 004 1991</p>
+  <p>Email: contact@fiouse.com</p>
+  <a [routerLink]="['/login']">Return to Login</a>
+</form>
