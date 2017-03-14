@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms'
 
+import { ContactService } from './contact.service';
+
 @Component({
   selector: 'fio-contact',
   templateUrl: './contact.component.html',
@@ -8,7 +10,7 @@ import { NgForm } from '@angular/forms'
 })
 export class ContactComponent {
 
-  constructor() { }
+  constructor(private contactService: ContactService) { }
   contact = {
     company: 'Acme Co.',
     name: 'Wile E. Coyote',
@@ -17,6 +19,10 @@ export class ContactComponent {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value)
+    this.contactService.submitForm(this.contact)
+    this.contact.company = ''
+    this.contact.name = ''
+    this.contact.phone = ''
+    this.contact.email = ''
   }
 }
