@@ -1,3 +1,4 @@
+import { ContactService } from './contact/contact.service';
 import { routing } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,7 +21,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
