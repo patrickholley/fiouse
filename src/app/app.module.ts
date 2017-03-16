@@ -1,3 +1,4 @@
+import { ResetService } from './login/reset.service';
 import { ContactService } from './contact/contact.service';
 import { routing } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,12 +9,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ContactComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpModule,
     routing
   ],
-  providers: [ContactService],
+  providers: [ContactService, ResetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

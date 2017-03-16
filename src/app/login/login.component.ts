@@ -1,3 +1,4 @@
+import { ResetService } from './reset.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private resetService: ResetService) { }
 
   ngOnInit() {
+  }
+
+  onReset() {
+    this.resetService.reset(prompt('WARNING: This will reset ALL SQL data within the entire databse. Please type "HARDRESET" to continue the operation:'))
   }
 
 }
