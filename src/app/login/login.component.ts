@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   onReset() {
-    this.resetService.reset(prompt('WARNING: This will reset ALL SQL data within the entire databse. Please type "HARDRESET" to continue the operation:'))
+    this.resetService.reset(prompt('WARNING: This will reset ALL SQL data within the entire databse. Please type "RESET" to continue the operation:'))
   }
 
 }
