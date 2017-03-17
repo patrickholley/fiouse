@@ -12,10 +12,10 @@ export class ContactComponent {
 
   constructor(private contactService: ContactService) { }
   contact = {
-    company: 'Acme Co.',
-    name: 'Wile E. Coyote',
-    phone: '017 009 1949',
-    email: 'wecoyote@acme.com'
+    company: '',
+    name: '',
+    phone: '',
+    email: ''
   }
 
   onSubmit(form: NgForm) {

@@ -1,4 +1,4 @@
-import { ResetService } from './login/reset.service';
+import { LoginService } from './login/login.service';
 import { ContactService } from './contact/contact.service';
 import { routing } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +24,7 @@ import { AboutComponent } from './about/about.component';
     HttpModule,
     routing
   ],
-  providers: [ContactService, ResetService],
+  providers: [ContactService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

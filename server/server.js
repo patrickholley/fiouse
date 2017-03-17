@@ -47,5 +47,6 @@ app.post('/contact', (req, res, next) => {
 })
 
 app.put('/reset', dbComms.reset)
+app.put('/login', dbComms.login)
 
 app.listen(port, () => console.log(`Listening on port ${port} . . .`))

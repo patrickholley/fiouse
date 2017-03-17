@@ -1,9 +1,17 @@
 <h2>Login</h2>
-<form>
-  Username/Email: <input type="text" name="username"><br>
-  Password: <input type="password" name="password"><br>
-  <button type="submit" class="btn btn-primary">Login</button><br>
-  <a [routerLink]="['/contact']">Don't have an account?</a>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  Username/Email: <input type="text"
+                          name="username"
+                          id="username"
+                          [(ngModel)]="login.username"
+                          required><br>
+  Password: <input type="password"
+                    name="password"
+                    id="password"
+                    [(ngModel)]="login.password"
+                    required><br>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button><br>
 </form>
+<a [routerLink]="['/contact']">Don't have an account?</a>
 <hr>
 <button type="submit" class="btn btn-primary" (click)="onReset()">Hard Data Reset (Admin)</button>
