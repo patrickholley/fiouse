@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const dbComms = require('./dbComms')
 const port = 3000
 
-app.post('/contact', (req, res, next) => {
+app.post('/contact', (req, res) => {
     transporter.sendMail({
         from: config.email,
         to: 'patrick_holley@outlook.com',
@@ -43,10 +43,16 @@ app.post('/contact', (req, res, next) => {
         Fiouse Training Solutions</div>`,
         text: `${req.body.company}\n${req.body.name}\n${req.body.phone}\n${req.body.email}`
     })
-    res.status(200).json({hello: "Hello!"})
+    res.status(200).json(`Email sent.`)
 })
 
 app.put('/reset', dbComms.reset)
 app.put('/login', dbComms.login)
+app.put('/encrypt', (req, res) => {
+    res.status(200).send(config.encrypt(req.body.string))
+})
+app.put('/decrypt', (req, res) => {
+    res.status(200).send(config.decrypt(req.body.string))
+})
 
 app.listen(port, () => console.log(`Listening on port ${port} . . .`))

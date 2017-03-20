@@ -17,6 +17,8 @@ export class LoginComponent {
 
   onSubmit() {
     this.loginService.login(this.login).subscribe((data) => alert(`Welcome, ${data.first_name}.`))
+    this.login.username = ''
+    this.login.password = ''
   }
 
   onReset() {

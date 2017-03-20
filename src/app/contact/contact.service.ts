@@ -14,9 +14,7 @@ export class ContactService {
     headers.append('Content-Type', 'application/json')
     return this.http.post('http://localhost:3000/contact', body, {
       headers: headers
-    }).map((data: Response) => {
-      data.json()
-    })
+    }).map((data: Response) => data.json())
       .catch(this.handleError)
       .subscribe(() => alert("Thank you. One of our representatives will reach out to you within 24 hours"))
   }

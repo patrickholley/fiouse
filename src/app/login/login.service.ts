@@ -5,28 +5,29 @@ import { Observable } from 'rxjs/Rx'
 
 @Injectable()
 export class LoginService {
+  static BASE_URL: string = 'http://localhost:3000'
+  headers: Headers
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    this.headers = new Headers()
+    this.headers.append('Content-Type', 'application/json')
+  }
 
   login(login: any) {
     const body = JSON.stringify({username: login.username, password: login.password})
-    const headers = new Headers()
-    headers.append('Content-Type', 'application/json')
-    return this.http.put('http://localhost:3000/login', body, {
-      headers: headers
-    }).map((data: Response) =>  data.json())
+    return this.http.put(`${LoginService.BASE_URL}/login`, body, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
       .catch((this.handleError))
   }
 
   reset(command: string) {
     const body = JSON.stringify({command})
-    const headers = new Headers()
-    headers.append('Content-Type', 'application/json')
-    return this.http.put('http://localhost:3000/reset', body, {
-      headers: headers
+    return this.http.put(`${LoginService.BASE_URL}/reset`, body, {
+      headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
-      .subscribe(() => alert("All SQL data is reset to default."))
+      .subscribe((data) => alert(`${data}`))
   }
 
   private handleError (error: any) {

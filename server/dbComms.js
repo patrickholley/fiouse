@@ -14,7 +14,7 @@ module.exports = {
         db.reset((err, company) => {
             if (err) res.status(500).send(err)
             else if (req.body.command != 'RESET') res.status(403).send('The wrong command was entered. Reset aborted.')
-            else res.status(200).send('Server reset successfully.')
+            else res.status(200).json('Server reset successfully.')
         })
     }
 }
