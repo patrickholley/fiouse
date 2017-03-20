@@ -1,0 +1,1 @@
+insert into local_session (employee_id) values ($1);

@@ -13,6 +13,14 @@ export class LoginService {
     this.headers.append('Content-Type', 'application/json')
   }
 
+  createSession(id: number) {
+    const body = JSON.stringify({id})
+    return this.http.put(`${LoginService.BASE_URL}/session`, body, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+  }
+
   login(login: any) {
     const body = JSON.stringify({username: login.username, password: login.password})
     return this.http.put(`${LoginService.BASE_URL}/login`, body, {

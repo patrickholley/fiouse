@@ -16,7 +16,12 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.loginService.login(this.login).subscribe((data) => alert(`Welcome, ${data.first_name}.`))
+    this.loginService.login(this.login).subscribe((data) => {
+      this.loginService.createSession(data.id).subscribe((subdata) => {
+        alert(`Welcome, ${subdata.id}`)
+      })
+      alert(`Welcome, ${data.first_name}.`)
+    })
     this.login.username = ''
     this.login.password = ''
   }

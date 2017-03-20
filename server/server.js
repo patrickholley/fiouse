@@ -48,6 +48,9 @@ app.post('/contact', (req, res) => {
 
 app.put('/reset', dbComms.reset)
 app.put('/login', dbComms.login)
+app.post('/session', dbComms.createSession)
+
+//for testing purposes
 app.put('/encrypt', (req, res) => {
     res.status(200).send(config.encrypt(req.body.string))
 })

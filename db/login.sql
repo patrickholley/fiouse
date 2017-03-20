@@ -1,1 +1,0 @@
-select * from employee where username=$1 and password=$2;
