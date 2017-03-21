@@ -18,9 +18,15 @@ module.exports = {
         })
     },
     createSession: (req, res) => {
-        db.createSession([req.body.id], (err, session) => {
+        db.createSession([req.body.id, req.body.fetcher], (err) => {
             if (err) res.status(500).send(err)
-            else res.status(200).json(session.id)
+            else db.fetchSession([req.body.fetcher], (err, session) => {
+                if (err) res.status(500).send(err)
+                db.removeFetcher([req.body.fetcher], (err) => {
+                    console.log(session[0].id)
+                    res.status(200).send(session[0].id.toString())
+                })
+            })
         })
     }
 }

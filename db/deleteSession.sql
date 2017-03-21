@@ -1,1 +1,1 @@
-delete from local_session where id=$1;
+delete from local_session where id = $1;

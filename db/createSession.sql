@@ -1,1 +1,1 @@
-insert into local_session (employee_id) values ($1);
+insert into local_session (employee_id, temp_fetcher) values ($1, $2);
