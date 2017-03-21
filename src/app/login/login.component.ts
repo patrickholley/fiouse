@@ -1,12 +1,13 @@
 import { LoginService } from './login.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'fio-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  loggedIn: boolean = this.loginService.getLoggedIn()
 
   constructor(private loginService: LoginService) { }
 
@@ -15,12 +16,13 @@ export class LoginComponent {
     password: 'cwjsolo'
   }
 
+  ngOnInit() {
+    this.loginService.isLoggedIn().subscribe((loggedIn) => this.loggedIn = loggedIn)
+  }
+
   onSubmit() {
     this.loginService.login(this.login).subscribe((data) => {
-      this.loginService.createSession(data.id).subscribe((session_id) => {
-        localStorage.setItem("session_id", session_id)
-        console.log(localStorage.getItem("session_id"))
-      })
+      this.loginService.createSession(data.id)
       alert(`Welcome, ${data.first_name}.`)
     })
     this.login.username = ''

@@ -1,6 +1,6 @@
-<h2>Login</h2>
+<h2>Login {{loggedIn}}</h2>
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  Username/Email: <input type="text"
+  Username: <input type="text"
                           name="username"
                           id="username"
                           [(ngModel)]="login.username"
