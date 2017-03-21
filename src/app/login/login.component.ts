@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit{
   loggedIn: boolean = this.loginService.getLoggedIn()
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) {
+    if (this.loggedIn) this.router.navigate(['home'])
+  }
 
   login = {
     username: 'cwjsolo',
@@ -25,8 +28,6 @@ export class LoginComponent implements OnInit{
       this.loginService.createSession(data.id)
       alert(`Welcome, ${data.first_name}.`)
     })
-    this.login.username = ''
-    this.login.password = ''
   }
 
   onReset() {

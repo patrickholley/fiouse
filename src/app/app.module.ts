@@ -9,14 +9,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { AuthGuard } from "./login/auth.guard";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ContactComponent,
-    AboutComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { AboutComponent } from './about/about.component';
     HttpModule,
     routing
   ],
-  providers: [ContactService, LoginService],
+  providers: [AuthGuard, ContactService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx'
@@ -19,7 +20,7 @@ export class LoginService {
     return this.logger.asObservable()
   }
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
     this.headers = new Headers()
     this.headers.append('Content-Type', 'application/json')
     if (localStorage.getItem("session_id")) {
@@ -37,6 +38,7 @@ export class LoginService {
         localStorage.setItem("session_id", session_id)
         console.log(localStorage.getItem("session_id"))
         this.logger.next(this.getLoggedIn())
+        this.router.navigate(['home'])
       })
   }
 
