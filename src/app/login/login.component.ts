@@ -17,8 +17,9 @@ export class LoginComponent {
 
   onSubmit() {
     this.loginService.login(this.login).subscribe((data) => {
-      this.loginService.createSession(data.id).subscribe((subdata) => {
-        alert(`Welcome, ${subdata.id}`)
+      this.loginService.createSession(data.id).subscribe((session_id) => {
+        localStorage.setItem("session_id", session_id)
+        console.log(localStorage.getItem("session_id"))
       })
       alert(`Welcome, ${data.first_name}.`)
     })

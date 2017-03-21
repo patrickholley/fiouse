@@ -23,8 +23,7 @@ module.exports = {
             else db.fetchSession([req.body.fetcher], (err, session) => {
                 if (err) res.status(500).send(err)
                 db.removeFetcher([req.body.fetcher], (err) => {
-                    console.log(session[0].id)
-                    res.status(200).send(session[0].id.toString())
+                    res.status(200).json(config.encrypt(session[0].id.toString()))
                 })
             })
         })

@@ -14,8 +14,9 @@ export class LoginService {
   }
 
   createSession(id: number) {
-    const body = JSON.stringify({id, fetcher: Math.random() * 1000000})
-    return this.http.put(`${LoginService.BASE_URL}/session`, body, {
+    const body = JSON.stringify({id, fetcher: Math.floor(Math.random() * 1000000)})
+    console.log(body)
+    return this.http.post(`${LoginService.BASE_URL}/session`, body, {
       headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
