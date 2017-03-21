@@ -10,6 +10,12 @@ module.exports = {
             else res.status(200).send(user[0])
         })
     },
+    logout: (req, res) => {
+        db.deleteSession([config.decrypt(req.body.session_id)], (err) => {
+            if (err) res.status(500).send(err)
+            else res.status(200).json('Logout successful.')
+        })
+    },
     reset: (req, res) => {
         db.reset((err, company) => {
             if (err) res.status(500).send(err)
@@ -26,6 +32,12 @@ module.exports = {
                     res.status(200).json(config.encrypt(session[0].id.toString()))
                 })
             })
+        })
+    },
+    getSession: (req, res) => {
+        db.getSession([config.decrypt(req.params.id)], (err, session) => {
+            if (err) res.status(500).send(err)
+            else res.status(200).send(session)
         })
     }
 }

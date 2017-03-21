@@ -48,6 +48,8 @@ app.post('/contact', (req, res) => {
 
 app.put('/reset', dbComms.reset)
 app.put('/login', dbComms.login)
+app.delete('/logout', dbComms.logout)
+app.get('/session/:id', dbComms.getSession)
 app.post('/session', dbComms.createSession)
 
 //for testing purposes

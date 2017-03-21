@@ -1,0 +1,1 @@
+select * from local_session where id = $1;

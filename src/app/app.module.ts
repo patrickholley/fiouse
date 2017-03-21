@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from "./login/auth.guard";
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthGuard } from "./login/auth.guard";
     LoginComponent,
     ContactComponent,
     HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

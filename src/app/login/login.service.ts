@@ -12,7 +12,7 @@ export class LoginService {
   private logger = new Subject<boolean>()
 
   getLoggedIn() {
-    if (!localStorage.getItem("session_id")) return false
+    if (!localStorage.getItem('session_id')) return false
     else return true
   }
 
@@ -23,7 +23,7 @@ export class LoginService {
   constructor(private http: Http, private router: Router) {
     this.headers = new Headers()
     this.headers.append('Content-Type', 'application/json')
-    if (localStorage.getItem("session_id")) {
+    if (localStorage.getItem('session_id')) {
       this.logger.next(this.getLoggedIn())
     }
   }
@@ -35,12 +35,25 @@ export class LoginService {
     }).map((data: Response) => data.json())
       .catch((this.handleError))
       .subscribe((session_id) => {
-        localStorage.setItem("session_id", session_id)
-        console.log(localStorage.getItem("session_id"))
+        localStorage.setItem('session_id', session_id)
+        console.log(localStorage.getItem('session_id'))
         this.logger.next(this.getLoggedIn())
         this.router.navigate(['home'])
       })
   }
+
+  /*validateSession(id: number) {
+    const body = JSON.stringify({id})
+    return this.http.get(`${LoginService.BASE_URL}/session`, {
+      headers: this.headers,
+      body
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+      .subscribe((session_id) => {
+        localStorage.setItem('session_id', session_id)
+        this.logger.next(this.getLoggedIn())
+      })
+  }*/
 
   login(login: any) {
     const body = JSON.stringify({username: login.username, password: login.password})
@@ -50,6 +63,20 @@ export class LoginService {
       .catch((this.handleError))
   }
 
+  logout() {
+    const body = JSON.stringify({session_id: localStorage.getItem('session_id')})
+    localStorage.removeItem('session_id')
+    return this.http.delete(`${LoginService.BASE_URL}/logout`, {
+      headers: this.headers,
+      body
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+      .subscribe((data) => {
+        alert(data)
+        this.router.navigate(['login'])
+      })
+  }
+
   reset(command: string) {
     const body = JSON.stringify({command})
     return this.http.put(`${LoginService.BASE_URL}/reset`, body, {
@@ -57,8 +84,8 @@ export class LoginService {
     }).map((data: Response) => data.json())
       .catch((this.handleError))
       .subscribe((data) => {
-        alert(`${data}`)
-        localStorage.removeItem("session_id")
+        alert(data)
+        localStorage.removeItem('session_id')
         this.logger.next(this.getLoggedIn())
       })
   }
