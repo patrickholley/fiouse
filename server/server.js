@@ -46,9 +46,10 @@ app.post('/contact', (req, res) => {
     res.status(200).json(`Email sent.`)
 })
 
-app.put('/reset', dbComms.reset)
 app.put('/login', dbComms.login)
 app.delete('/logout', dbComms.logout)
+app.get('/profile/:session_id', dbComms.getProfile)
+app.put('/reset', dbComms.reset)
 app.get('/session/:id', dbComms.getSession)
 app.post('/session', dbComms.createSession)
 
