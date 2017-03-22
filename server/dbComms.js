@@ -34,7 +34,7 @@ module.exports = {
         })
     },
     login: (req, res) => {
-        db.getEmployeeByName([req.body.employeename], (err, employee) => {
+        db.getEmployeeByName([req.body.username], (err, employee) => {
             if (err) res.status(500).send(err)
             else if (!employee[0] || config.decrypt(employee[0].password) != req.body.password) res.status(403).send('The credentials entered are incorrect. Please try again.')
             else db.createSession([employee[0].id, req.body.fetcher], (err) => {

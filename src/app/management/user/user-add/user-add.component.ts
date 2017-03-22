@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent {
-  profile = {
+  user = {
     username: '',
     first_name: '',
     last_name: '',
@@ -23,5 +23,8 @@ export class UserAddComponent {
   constructor(private manageServ: ManagementService) {}
 
   onSubmit() {
+    if (this.user.password == this.user.cpassword) {
+      this.manageServ.addUser(this.user)
+    }
   }
 }
