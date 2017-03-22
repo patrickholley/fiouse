@@ -1,1 +1,0 @@
-select first_name, last_name, username, email from employee where id = $1;

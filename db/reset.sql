@@ -62,30 +62,6 @@ insert into permission (name)
 values ('Edit Team');
 insert into permission (name)
 values ('Delete Team');
-/*insert into permission (name)
-values ('View Track');
-insert into permission (name)
-values ('Add Track');
-insert into permission (name)
-values ('Edit Track');
-insert into permission (name)
-values ('Delete Track');
-insert into permission (name)
-values ('View Course');
-insert into permission (name)
-values ('Add Course');
-insert into permission (name)
-values ('Edit Course');
-insert into permission (name)
-values ('Delete Course');
-insert into permission (name)
-values ('View Session');
-insert into permission (name)
-values ('Add Session');
-insert into permission (name)
-values ('Edit Session');
-insert into permission (name)
-values ('Delete Session');*/
 
 /*assign permissions to teams*/
 create table team_permission (

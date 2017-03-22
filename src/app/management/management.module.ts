@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -21,7 +23,7 @@ import { ManagementComponent } from './management.component';
     ManagementComponent,
     UserComponent,
   ],
-  imports: [CommonModule, management_routing],
+  imports: [BrowserModule, FormsModule, CommonModule, management_routing],
   providers: [ManagementService]
 })
 

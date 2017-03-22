@@ -51,6 +51,7 @@ app.delete('/logout', dbComms.logout)
 app.get('/profile/:session_id', dbComms.getProfile)
 app.put('/reset', dbComms.reset)
 app.get('/session/:id', dbComms.getSession)
+app.post('/employee', dbComms.createEmployee)
 
 //for testing purposes
 app.put('/encrypt', (req, res) => {

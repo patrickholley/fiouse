@@ -1,3 +1,47 @@
-<p>
-  user-add works!
-</p>
+<section [hidden]="isLoading">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  Username: <input type="text"
+                    name="uname"
+                    id="uname"
+                    [(ngModel)]="profile.username"
+                    required><br>
+  First Name: <input type="text"
+                      name="fname"
+                      id="fname"
+                      [(ngModel)]="profile.first_name"
+                      required><br>
+  Last Name: <input type="text"
+                    name="lname"
+                    id="lname"
+                    [(ngModel)]="profile.last_name"
+                    required><br>
+  Email: <input type="text"
+                name="email"
+                id="email"
+                [(ngModel)]="profile.email"
+                pattern=".+@.+"
+                required><br>
+  Password: <input type="password"
+                        name="password"
+                        id="password"
+                        [(ngModel)]="profile.password"><br>
+  Confirm Password: <input type="password"
+                            name="cpassword"
+                            id="cpassword"
+                            [(ngModel)]="profile.cpassword"><br>
+  Role: <input type="text"
+                name="role"
+                id="role"
+                [(ngModel)]="profile.role"
+                pattern=".+@.+"
+                required><br>
+  <hr>
+  To save these changes, please enter <i>your</i> password below and hit "Save".<br>
+  <input type="password"
+          name="opassword"
+          id="opassword"
+          [(ngModel)]="profile.opassword"
+          required><br>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button><br>
+</form>
+</section>
