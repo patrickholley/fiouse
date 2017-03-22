@@ -10,15 +10,7 @@ export class LoginService {
   headers: Headers
 
   private logger = new Subject<boolean>()
-
-  getLoggedIn() {
-    if (!localStorage.getItem('session_id')) return false
-    else return true
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    return this.logger.asObservable()
-  }
+  private isValidating = false
 
   constructor(private http: Http, private router: Router) {
     this.headers = new Headers()
@@ -26,6 +18,19 @@ export class LoginService {
     if (localStorage.getItem('session_id')) {
       this.logger.next(this.getLoggedIn())
     }
+  }
+
+  getLoggedIn() {
+    if (localStorage.getItem('session_id') && !this.isValidating && this.router.url != 'login') {
+      this.isValidating = true
+      this.validateSession(localStorage.getItem('session_id')).subscribe()
+    }
+    if (!localStorage.getItem('session_id')) return false
+    else return true
+  }
+
+  isLoggedIn(): Observable<boolean> {
+    return this.logger.asObservable()
   }
 
   createSession(id: number) {
@@ -39,21 +44,22 @@ export class LoginService {
         console.log(localStorage.getItem('session_id'))
         this.logger.next(this.getLoggedIn())
         this.router.navigate(['home'])
+        this.isValidating = true
       })
   }
 
-  /*validateSession(id: number) {
-    const body = JSON.stringify({id})
-    return this.http.get(`${LoginService.BASE_URL}/session`, {
-      headers: this.headers,
-      body
+  validateSession(session_id: string) {
+    return this.http.get(`${LoginService.BASE_URL}/session/${session_id}`, {
+      headers: this.headers
     }).map((data: Response) => data.json())
-      .catch((this.handleError))
-      .subscribe((session_id) => {
-        localStorage.setItem('session_id', session_id)
-        this.logger.next(this.getLoggedIn())
+      .catch((error) => {
+        localStorage.removeItem('session_id')
+        alert('Your session is expired or corrupted. Please login again.')
+        this.router.navigate(['login'])
+        console.log(error)
+        return Observable.throw(error)
       })
-  }*/
+  }
 
   login(login: any) {
     const body = JSON.stringify({username: login.username, password: login.password})

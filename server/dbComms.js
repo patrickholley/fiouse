@@ -37,7 +37,7 @@ module.exports = {
     getSession: (req, res) => {
         db.getSession([config.decrypt(req.params.id)], (err, session) => {
             if (err) res.status(500).send(err)
-            else res.status(200).send(session)
+            else res.status(200).send(session[0])
         })
     }
 }
