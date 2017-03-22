@@ -1,29 +1,31 @@
-<!--<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<section [hidden]="isLoading">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
     First Name: <input type="text"
                         name="fname"
                         id="fname"
-                        [(ngModel)]="employee.fname"
+                        [(ngModel)]="profile.first_name"
                         required><br>
     Last Name: <input type="text"
                         name="lname"
                         id="lname"
-                        [(ngModel)]="employee.lname"
+                        [(ngModel)]="profile.last_name"
                         required><br>
     Email: <input type="text"
                     name="email"
                     id="email"
-                    [(ngModel)]="employee.email"
+                    [(ngModel)]="profile.email"
                     required><br>
-    Password: <input type="password"
+    New Password: <input type="password"
                         name="password"
                         id="password"
-                        [(ngModel)]="employee.password"
-                        required><br>
+                        [(ngModel)]="profile.password"><br>
+    (Optional)<br>
     Confirm Password: <input type="password"
                                 name="cpassword"
                                 id="cpassword"
-                                [(ngModel)]="employee.cpassword"
-                                required><br>
+                                [(ngModel)]="profile.cpassword"><br>
+    (Required if saving new password)<br>
     <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Save</button><br>
-</form>-->
+</form>
+</section>
 <a [routerLink]="['/home']">Return Home</a><br>

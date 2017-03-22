@@ -7,13 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  profile: any
+  profile = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    cpassword: '',
+  }
+  isLoading = true
 
   constructor(private loginService: LoginService) {
     this.loginService.getProfile(localStorage.getItem('session_id'))
       .subscribe((profile) => {
         this.profile = profile
+        this.profile.password = ''
+        this.profile.cpassword = ''
         console.log(this.profile)
+        this.isLoading = false
       })
   }
 }
