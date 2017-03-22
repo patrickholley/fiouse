@@ -1,6 +1,7 @@
+import { ManagementModule } from './management/management.module';
 import { LoginService } from './login/login.service';
 import { ContactService } from './contact/contact.service';
-import { routing } from './app.routes';
+import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,29 +13,17 @@ import { LoginComponent } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from "./login/auth.guard";
-import { ManagementComponent } from './management/management.component';
-import { TeamComponent } from './management/team/team.component';
-import { TeamAddComponent } from './management/team/team-add/team-add.component';
-import { TeamEditComponent } from './management/team/team-edit/team-edit.component';
-import { UserAddComponent } from './management/user/user-add/user-add.component';
-import { UserEditComponent } from './management/user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ContactComponent,
-    HomeComponent,
-    UserComponent,
-    ManagementComponent,
-    TeamComponent,
-    TeamAddComponent,
-    TeamEditComponent,
-    UserAddComponent,
-    UserEditComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    ManagementModule,
     FormsModule,
     HttpModule,
     routing
