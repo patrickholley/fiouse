@@ -2,7 +2,7 @@ import { LoginService } from './../login/login.service';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'fio-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

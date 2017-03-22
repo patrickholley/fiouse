@@ -20,7 +20,7 @@
   Contact's Email: <input type="text"
                           name="email"
                           id="email"
-                          pattern=".+@.+"
+                          pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
                           [(ngModel)]="contact.email"
                           required><br>
   <button type="submit"

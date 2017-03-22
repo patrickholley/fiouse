@@ -24,13 +24,6 @@ export class LoginService {
     else return true
   }
 
-  getProfile(session_id: string) {
-    return this.http.get(`${LoginService.BASE_URL}/profile/${session_id}`, {
-      headers: this.headers
-    }).map((data: Response) => data.json())
-      .catch((this.handleError))
-  }
-
   isLoggedIn(): Observable<boolean> {
     return this.logger.asObservable()
   }
@@ -57,7 +50,11 @@ export class LoginService {
       headers: this.headers,
       body
     }).map((data: Response) => data.json())
-      .catch((this.handleError))
+      .catch((error) => {
+        this.router.navigate(['login'])
+        console.log(error)
+        return Observable.throw(error)
+      })
       .subscribe(() => this.router.navigate(['login']))
   }
 
