@@ -10,7 +10,6 @@ export class LoginService {
   headers: Headers
 
   private logger = new Subject<boolean>()
-  private isValidating = false
 
   constructor(private http: Http, private router: Router) {
     this.headers = new Headers()
@@ -21,52 +20,34 @@ export class LoginService {
   }
 
   getLoggedIn() {
-    if (localStorage.getItem('session_id') && !this.isValidating && this.router.url != 'login') {
-      this.isValidating = true
-      this.validateSession(localStorage.getItem('session_id')).subscribe()
-    }
     if (!localStorage.getItem('session_id')) return false
     else return true
+  }
+
+  getProfile(session_id: string) {
+    return this.http.get(`${LoginService.BASE_URL}/profile/${session_id}`, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
   }
 
   isLoggedIn(): Observable<boolean> {
     return this.logger.asObservable()
   }
 
-  createSession(id: number) {
-    const body = JSON.stringify({id, fetcher: Math.floor(Math.random() * 1000000)})
-    return this.http.post(`${LoginService.BASE_URL}/session`, body, {
+  login(login: any) {
+    const body = JSON.stringify({username: login.username,
+                                  password: login.password,
+                                  fetcher: Math.floor(Math.random() * 1000000)})
+    return this.http.post(`${LoginService.BASE_URL}/login`, body, {
       headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
       .subscribe((session_id) => {
-        localStorage.setItem('session_id', session_id)
-        console.log(localStorage.getItem('session_id'))
-        this.logger.next(this.getLoggedIn())
         this.router.navigate(['home'])
-        this.isValidating = true
+        localStorage.setItem('session_id', session_id)
+        this.logger.next(this.getLoggedIn())
       })
-  }
-
-  validateSession(session_id: string) {
-    return this.http.get(`${LoginService.BASE_URL}/session/${session_id}`, {
-      headers: this.headers
-    }).map((data: Response) => data.json())
-      .catch((error) => {
-        localStorage.removeItem('session_id')
-        alert('Your session is expired or corrupted. Please login again.')
-        this.router.navigate(['login'])
-        console.log(error)
-        return Observable.throw(error)
-      })
-  }
-
-  login(login: any) {
-    const body = JSON.stringify({username: login.username, password: login.password})
-    return this.http.put(`${LoginService.BASE_URL}/login`, body, {
-      headers: this.headers
-    }).map((data: Response) => data.json())
-      .catch((this.handleError))
   }
 
   logout() {
@@ -77,10 +58,7 @@ export class LoginService {
       body
     }).map((data: Response) => data.json())
       .catch((this.handleError))
-      .subscribe((data) => {
-        alert(data)
-        this.router.navigate(['login'])
-      })
+      .subscribe(() => this.router.navigate(['login']))
   }
 
   reset(command: string) {
@@ -97,7 +75,7 @@ export class LoginService {
   }
 
   private handleError (error: any) {
-    alert(`ERROR: ${error._body}`)
+    alert(error._body)
     console.log(error)
     return Observable.throw(error)
   }

@@ -4,11 +4,13 @@
                           name="username"
                           id="username"
                           [(ngModel)]="login.username"
+                          [disabled]="isLoggingIn"
                           required><br>
   Password: <input type="password"
                     name="password"
                     id="password"
                     [(ngModel)]="login.password"
+                    [disabled]="isLoggingIn"
                     required><br>
   <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Login</button><br>
 </form>

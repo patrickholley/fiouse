@@ -3,17 +3,6 @@ const db = app.get('db')
 const config = require('./config')
 
 module.exports = {
-    createSession: (req, res) => {
-        db.createSession([req.body.id, req.body.fetcher], (err) => {
-            if (err) res.status(500).send(err)
-            else db.fetchSession([req.body.fetcher], (err, session) => {
-                if (err) res.status(500).send(err)
-                db.removeFetcher([req.body.fetcher], (err) => {
-                    res.status(200).json(config.encrypt(session[0].id.toString()))
-                })
-            })
-        })
-    },
     getProfile: (req, res) => {
         db.getSession([config.decrypt(req.params.session_id)], (err, session) => {
             if (err) res.status(500).send(err)
@@ -34,7 +23,15 @@ module.exports = {
         db.getUserByName([req.body.username], (err, user) => {
             if (err) res.status(500).send(err)
             else if (!user[0] || config.decrypt(user[0].password) != req.body.password) res.status(403).send('The credentials entered are incorrect. Please try again.')
-            else res.status(200).send(user[0])
+            else db.createSession([user[0].id, req.body.fetcher], (err) => {
+                if (err) res.status(500).send(err)
+                else db.fetchSession([req.body.fetcher], (err, session) => {
+                    if (err) res.status(500).send(err)
+                    db.removeFetcher([req.body.fetcher], (err) => {
+                        res.status(200).json(config.encrypt(session[0].id.toString()))
+                    })
+                })
+            })
         })
     },
     logout: (req, res) => {

@@ -8,22 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loggedIn: boolean = this.loginService.getLoggedIn()
+  loggedIn = this.loginService.getLoggedIn()
+  isLoggingIn = false
 
   constructor(private loginService: LoginService, private router: Router) {
     if (this.loggedIn) this.router.navigate(['home'])
   }
 
   login = {
-    username: 'cwjsolo',
-    password: 'cwjsolo'
+    username: 'oacolenheim',
+    password: 'oacolenheim'
   }
 
   onSubmit() {
-    this.loginService.login(this.login).subscribe((data) => {
-      this.loginService.createSession(data.id)
-      alert(`Welcome, ${data.first_name}.`)
-    })
+    this.loginService.login(this.login)
   }
 
   onReset() {

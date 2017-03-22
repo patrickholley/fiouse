@@ -1,24 +1,19 @@
 import { LoginService } from './../login/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
-  constructor(private loginService: LoginService) { }
+export class ProfileComponent {
+  profile: any
 
-  isLoading = true
-
-  onLogout() {
-    this.loginService.logout()
-  }
-
-  ngOnInit() {
-    this.loginService.validateSession(localStorage.getItem('session_id')).subscribe((data) => {
-      console.log(data.employee_id)
-      this.isLoading = false
-    })
+  constructor(private loginService: LoginService) {
+    this.loginService.getProfile(localStorage.getItem('session_id'))
+      .subscribe((profile) => {
+        this.profile = profile
+        console.log(this.profile)
+      })
   }
 }
