@@ -23,21 +23,14 @@ export class ManagementService {
                                 })
     return this.http.post(`${ManagementService.BASE_URL}/employee`, body, {
       headers: this.headers
-    })
-  }
-}
-
-/*login(login: any) {
-    const body = JSON.stringify({username: login.username,
-                                  password: login.password,
-                                  fetcher: Math.floor(Math.random() * 1000000)})
-    return this.http.post(`${LoginService.BASE_URL}/login`, body, {
-      headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
-      .subscribe((session_id) => {
-        this.router.navigate(['home'])
-        localStorage.setItem('session_id', session_id)
-        this.logger.next(this.getLoggedIn())
-      })
-  }*/
+      .subscribe((data) => alert(data))
+  }
+
+  private handleError (error: any) {
+    alert(error._body)
+    console.log(error)
+    return Observable.throw(error)
+  }
+}

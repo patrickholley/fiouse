@@ -9,14 +9,14 @@ import { Component } from '@angular/core';
 })
 export class UserAddComponent {
   user = {
-    username: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-    role: '',
-    password: '',
-    cpassword: '',
-    opassword: ''
+    username: 'testerino',
+    first_name: 'Tyler',
+    last_name: 'Esterino',
+    email: 'testerino@test.com',
+    role: 'Tester',
+    password: 'testerino',
+    cpassword: 'testerino',
+    opassword: 'testerino'
   }
   isLoading = false
 

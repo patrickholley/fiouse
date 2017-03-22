@@ -27,4 +27,4 @@ import { ManagementComponent } from './management.component';
   providers: [ManagementService]
 })
 
-export class ManagementModule { }
+export class ManagementModule {}
