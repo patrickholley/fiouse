@@ -36,8 +36,7 @@ create table employee (
 /*for locally storing authentication*/
 create table local_session (
     id serial primary key,
-    employee_id int references employee(id),
-    temp_fetcher int unique
+    employee_id int unique references employee(id)
 );
 
 /*available permissions for teams*/

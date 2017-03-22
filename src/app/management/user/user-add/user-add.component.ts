@@ -19,6 +19,7 @@ export class UserAddComponent {
     opassword: 'testerino'
   }
   isLoading = false
+  teamList = []
 
   constructor(private manageServ: ManagementService) {}
 

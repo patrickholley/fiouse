@@ -1,1 +1,0 @@
-select id from local_session where temp_fetcher = $1;

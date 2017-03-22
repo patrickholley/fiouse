@@ -1,0 +1,1 @@
+delete from local_session where employee_id = $1;

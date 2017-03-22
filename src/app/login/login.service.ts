@@ -30,8 +30,7 @@ export class LoginService {
 
   login(login: any) {
     const body = JSON.stringify({username: login.username,
-                                  password: login.password,
-                                  fetcher: Math.floor(Math.random() * 1000000)})
+                                  password: login.password})
     return this.http.post(`${LoginService.BASE_URL}/login`, body, {
       headers: this.headers
     }).map((data: Response) => data.json())

@@ -28,6 +28,14 @@ export class ManagementService {
       .subscribe((data) => alert(data))
   }
 
+  getTeam() {
+    return this.http.get(`${ManagementService.BASE_URL}/team/${localStorage.getItem('session_id')}`, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+      .subscribe(((data) => alert(data)))
+  }
+
   private handleError (error: any) {
     alert(error._body)
     console.log(error)

@@ -1,1 +1,1 @@
-select * from local_session where id = $1;
+select * from local_session where employee_id = $1;
