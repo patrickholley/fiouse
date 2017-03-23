@@ -162,8 +162,8 @@ values (3, 10, 11, '{1, 2, 3, 4, 5, 6, 7, 8}');
 insert into team_permission (company_id, team_id, managed_team_id, permission_ids)
 values (3, 12, 13, '{1, 2, 3, 4, 5, 6, 7, 8}');
 insert into employee (first_name, last_name, username, password, email, role, team_id, company_id)
-values ('Cassius', 'Bright', 'oacbright',
-    '80.696.683.10658376.894.453.45.-5581250.307.700.686.-10616.714.952.907.94472791.470.265.300.17234635.758.819.63.162.76477.369.567.233.2435347.160.511.525.5582214.399.483.929.1947235.320.500.198.-9572',
+values ('Cassius', 'Bright', 'oaccbright',
+    '111.335.352.4262842.109.358.772.577.2571093.786.629.725.-3955855.200.299.842.-25703.295.271.716.10817379.103.767.484.623.101955084.330.294.782.-6982.845.659.642.68107.695.448.161.-2554664.428.298.17.1578952',
     'oaccbright@orbalac.com', 'Lead Instructor', 15, 3);
 insert into employee (first_name, last_name, username, password, email, role, team_id, company_id, reports_to_id)
 values ('Aina', ' Holden', 'oacaholden',

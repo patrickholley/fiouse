@@ -28,6 +28,13 @@ export class ManagementService {
       .subscribe((data) => alert(data))
   }
 
+  getEditTeamList() {
+    return this.http.get(`${ManagementService.BASE_URL}/edit-team/${localStorage.getItem('session_id')}`, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+  }
+
   getTeam() {
     return this.http.get(`${ManagementService.BASE_URL}/team/${localStorage.getItem('session_id')}`, {
       headers: this.headers

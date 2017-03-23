@@ -6,7 +6,7 @@
                 required>
     <option>Choose a team. . . .</option>
     <option *ngFor="let team of teamList"
-            [value]="team">{{team}}</option>
+            [value]="team">{{team.name}}</option>
   </select><br>
   Username: <input type="text"
                     name="uname"

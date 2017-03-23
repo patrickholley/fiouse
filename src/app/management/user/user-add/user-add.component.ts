@@ -20,9 +20,11 @@ export class UserAddComponent {
     opassword: 'oacolenheim'
   }
   isLoading = false
-  teamList = [1, 2, 3, 4]
+  teamList = []
 
-  constructor(private manageServ: ManagementService) {}
+  constructor(private manageServ: ManagementService) {
+    this.manageServ.getEditTeamList().subscribe((teams) => this.teamList = teams)
+  }
 
   onSubmit() {
     if (this.user.password == this.user.cpassword) {

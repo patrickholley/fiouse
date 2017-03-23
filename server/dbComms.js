@@ -18,13 +18,33 @@ module.exports = {
             })
     },
     getEditTeamList: (req, res) => {
-        db.getEditTeamList ([config.decrypt(req.params.session_id)], (err, teams) => {
+        db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
             if (err) res.status(500).send(err)
-            else res.status(200).send(teams)
+            else {
+                if (t_permissions[0].fiouse) {
+                    db.getTeamsFiouse ((err, teams) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(teams)
+                    })
+                }
+                else if (t_permissions[0].admin) {
+                    db.getAdminTeamList ([t_permissions[0].company_id], (err, teams) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(teams)
+                    })
+                }
+                else if (t_permissions[0].base) {
+                    res.status(403).send('Cannot edit teams. Please contact your admin.')
+                }
+                else db.getEditTeamList ([t_permissions[0].team_id], (err, teams) => {
+                    if (err) res.status(500).send(err)
+                    else res.status(200).send(teams)
+                })
+            }
         })
     },
     getProfile: (req, res) => {
-        db.getEmployeeById ([config.decrypt(req.params.session_id)], (err, profile) => {
+        db.getEmployeeBySession ([config.decrypt(req.params.session_id)], (err, profile) => {
             if (err) res.status(500).send(err)
             else if (!profile[0]) res.status(403).send('Invalid session.')
             else res.status(200).send(profile[0])
