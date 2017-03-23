@@ -25,8 +25,8 @@ export class UserComponent {
     })
   }
 
-  editUser(user) {
-    this.manageServ.user = user
+  editUser(id) {
+    this.manageServ.user = this.user
     this.router.navigate(['management/user/edit'])
   }
 }

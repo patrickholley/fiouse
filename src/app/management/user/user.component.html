@@ -1,6 +1,7 @@
 <h2>Users</h2>
 <div [hidden]="isLoading">
 <a [routerLink]="['add']">Add User</a><br>
+<div [hidden]="isEditing">
 Edit User: <select id="user"
             name="user"
             [(ngModel)]="user"
@@ -9,7 +10,8 @@ Edit User: <select id="user"
             required>
 <option value=""></option>
 <option *ngFor="let user of userList"
-        [value]="user.id">{{user.last_name}}, {{user.first_name}}</option>
+        [ngValue]="user">{{user.last_name}}, {{user.first_name}}</option>
 </select><br>
+</div>
 </div>
 <router-outlet></router-outlet>
