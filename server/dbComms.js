@@ -4,19 +4,25 @@ const config = require('./config')
 
 module.exports = {
     createEmployee: (req, res) => {
-        db.createEmployee(
-            [
-                req.body.first_name,
-                req.body.last_name,
-                req.body.username,
-                config.encrypt(req.body.password),
-                req.body.email,
-                req.body.role,
-                req.body.team_id
-            ], (err) => {
+        db.getEmployeeBySession([config.decrypt(req.body.session_id)], (err, user) => {
+            if (err) res.status(500).send(err)
+            else if (!user[0] || config.decrypt(user[0].password) != req.body.session_password) {
+                res.status(403).json(`Invalid credentials. Please re-enter your password. If that does not work, log out and back in, then attempt again. If the issue continues to persist, contact your admin.`)
+            }
+            else db.createEmployee(
+                [
+                    req.body.first_name,
+                    req.body.last_name,
+                    req.body.username,
+                    config.encrypt(req.body.password),
+                    req.body.email,
+                    req.body.role,
+                    req.body.team_id
+                ], (err) => {
                 if (err) res.status(500).send(err)
                 else res.status(200).json('Successfully added.')
             })
+        })
     },
     getEditTeamList: (req, res) => {
         db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
@@ -42,13 +48,6 @@ module.exports = {
                     else res.status(200).send(teams)
                 })
             }
-        })
-    },
-    getProfile: (req, res) => {
-        db.getEmployeeBySession ([config.decrypt(req.params.session_id)], (err, profile) => {
-            if (err) res.status(500).send(err)
-            else if (!profile[0]) res.status(403).send('Invalid session.')
-            else res.status(200).send(profile[0])
         })
     },
     getSession: (req, res) => {

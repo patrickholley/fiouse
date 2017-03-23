@@ -10,7 +10,7 @@ import { UserComponent } from './user/user.component';
 import { ManagementComponent } from './management.component';
 
 export const MANAGEMENT_ROUTES: Routes = [
-    { path: 'management', component: ManagementComponent, canActivate: [AuthGuard],
+    { path: 'management', component: ManagementComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
         children: [
             { path: 'team', component: TeamComponent, children: [
                 { path: 'add', component: TeamAddComponent },

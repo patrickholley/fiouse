@@ -9,7 +9,7 @@ export const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'contact', component: ContactComponent },
-    //{ path: 'management', loadChildren: "app/management/management.module#ManagementModule" },
+    { path: 'management', loadChildren: "app/management/management.module#ManagementModule" },
     { path: '**', redirectTo: '', pathMatch: 'full'}
 ]
 

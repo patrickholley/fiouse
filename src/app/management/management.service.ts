@@ -20,7 +20,9 @@ export class ManagementService {
                                   email: user.email,
                                   role: user.role,
                                   password: user.password,
-                                  team_id: user.team_id
+                                  team_id: user.team_id,
+                                  session_id: localStorage.getItem('session_id'),
+                                  session_password: user.opassword
                                 })
     return this.http.post(`${ManagementService.BASE_URL}/employee`, body, {
       headers: this.headers
