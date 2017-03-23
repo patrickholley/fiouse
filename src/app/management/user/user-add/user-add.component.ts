@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class UserAddComponent {
   user = {
+    team_id: 'Choose a team. . . .',
     username: 'testerino',
     first_name: 'Tyler',
     last_name: 'Esterino',
@@ -16,10 +17,10 @@ export class UserAddComponent {
     role: 'Tester',
     password: 'testerino',
     cpassword: 'testerino',
-    opassword: 'testerino'
+    opassword: 'oacolenheim'
   }
   isLoading = false
-  teamList = []
+  teamList = [1, 2, 3, 4]
 
   constructor(private manageServ: ManagementService) {}
 

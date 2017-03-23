@@ -1,5 +1,13 @@
 <section [hidden]="isLoading">
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  Team: <select id="team"
+                name="team"
+                [(ngModel)]="user.team_id"
+                required>
+    <option>Choose a team. . . .</option>
+    <option *ngFor="let team of teamList"
+            [value]="team">{{team}}</option>
+  </select><br>
   Username: <input type="text"
                     name="uname"
                     id="uname"
@@ -22,10 +30,10 @@
                 pattern=".+@.+"
                 required><br>
   Password: <input type="password"
-                        name="password"
-                        id="password"
-                        [(ngModel)]="user.password"
-                        required><br>
+                    name="password"
+                    id="password"
+                    [(ngModel)]="user.password"
+                    required><br>
   Confirm Password: <input type="password"
                             name="cpassword"
                             id="cpassword"

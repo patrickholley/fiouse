@@ -17,6 +17,12 @@ module.exports = {
                 else res.status(200).json('Successfully added.')
             })
     },
+    getEditTeamList: (req, res) => {
+        db.getEditTeamList ([config.decrypt(req.params.session_id)], (err, teams) => {
+            if (err) res.status(500).send(err)
+            else res.status(200).send(teams)
+        })
+    },
     getProfile: (req, res) => {
         db.getEmployeeById ([config.decrypt(req.params.session_id)], (err, profile) => {
             if (err) res.status(500).send(err)

@@ -46,21 +46,23 @@ create table permission (
 );
 
 insert into permission (name)
-values ('View User');
+values ('View User in Team'); /*View details of a single user in a team*/
 insert into permission (name)
-values ('Add User');
+values ('Add User in Team'); /*Add new user to a team*/
 insert into permission (name)
-values ('Edit User');
+values ('Edit User in Team'); /*Edit a user's details in a team*/
 insert into permission (name)
-values ('Delete User');
+values ('Delete User in Team'); /*Delete user in a team*/
 insert into permission (name)
-values ('View Team');
+values ('View Team'); /*View user list of a team*/
 insert into permission (name)
-values ('Add Team');
+values ('Edit User List in Team'); /*View details of a single user in a team*/
 insert into permission (name)
-values ('Edit Team');
+values ('Create Team'); /*Create a new team*/
 insert into permission (name)
-values ('Delete Team');
+values ('Edit Team Permissions'); /*Edit permissions for a team*/
+insert into permission (name)
+values ('Delete Team');  /*Delete a team*/
 
 /*assign permissions to teams*/
 create table team_permission (
