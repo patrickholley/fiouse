@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'fio-user-edit',
-  templateUrl: './user-edit.component.html',
+  templateUrl: '../user-add/user-add.component.html',
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-
+  @Input() user:any
   constructor() { }
 
   ngOnInit() {

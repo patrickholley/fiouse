@@ -1,0 +1,1 @@
+select * from employee where company_id = $1 and name != '_Admin';

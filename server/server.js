@@ -53,6 +53,7 @@ app.get('/session/:id', dbComms.getSession)
 app.post('/employee', dbComms.createEmployee)
 app.get('/team/:session_id', dbComms.getTeams)
 app.get('/edit-team/:session_id', dbComms.getEditTeamList)
+app.get('/edit-employee/:session_id', dbComms.getEditEmployeeList)
 
 //for testing purposes
 app.put('/encrypt', (req, res) => {

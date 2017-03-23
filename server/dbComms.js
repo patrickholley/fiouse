@@ -27,6 +27,7 @@ module.exports = {
     getEditTeamList: (req, res) => {
         db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
             if (err) res.status(500).send(err)
+            else if (!t_permissions[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
             else {
                 if (t_permissions[0].fiouse) {
                     db.getFiouseTeamList ((err, teams) => {
@@ -41,11 +42,40 @@ module.exports = {
                     })
                 }
                 else if (t_permissions[0].base) {
-                    res.status(403).send('You have insufficient privileges to save changes here. Please contact your admin.')
+                    res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                 }
                 else db.getEditTeamList ([t_permissions[0].team_id], (err, teams) => {
                     if (err) res.status(500).send(err)
+                    else if (!teams[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                     else res.status(200).send(teams)
+                })
+            }
+        })
+    },
+    getEditEmployeeList: (req, res) => {
+        db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
+            if (err) res.status(500).send(err)
+            else if (!t_permissions[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+            else {
+                if (t_permissions[0].fiouse) {
+                    db.getFiouseEmployeeList ((err, employees) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(employees)
+                    })
+                }
+                else if (t_permissions[0].admin) {
+                    db.getAdminEmployeeList ([t_permissions[0].company_id], (err, employees) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(employees)
+                    })
+                }
+                else if (t_permissions[0].base) {
+                    res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+                }
+                else db.getEditEmployeeList ([t_permissions[0].team_id], (err, employees) => {
+                    if (err) res.status(500).send(err)
+                    else if (!employees[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+                    else res.status(200).send(employees)
                 })
             }
         })

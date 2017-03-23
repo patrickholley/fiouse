@@ -12,14 +12,14 @@ export class UserAddComponent {
   teamList = []
   user = {
     team_id: null,
-    username: 'testerino',
-    first_name: 'Tyler',
-    last_name: 'Esterino',
-    email: 'testerino@test.com',
-    role: 'Tester',
-    password: 'testerino',
-    cpassword: 'testerino',
-    opassword: 'oacolenheim'
+    username: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    role: '',
+    password: '',
+    cpassword: '',
+    opassword: ''
   }
 
   constructor(private manageServ: ManagementService) {

@@ -14,12 +14,12 @@ export const MANAGEMENT_ROUTES: Routes = [
         children: [
             { path: 'team', component: TeamComponent, children: [
                 { path: 'add', component: TeamAddComponent },
-                { path: ':id/edit', component: TeamEditComponent },
+                { path: 'edit', component: TeamEditComponent },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
             ] },
             { path: 'user', component: UserComponent, children: [
                 { path: 'add', component: UserAddComponent },
-                { path: ':id/edit', component: UserEditComponent },
+                { path: 'edit', component: UserEditComponent },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
             ] },
             { path: '**', redirectTo: '', pathMatch: 'full' },
