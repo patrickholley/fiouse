@@ -17,7 +17,7 @@ Team: <select id="team"
         required>
 <option value=""></option>
 <option *ngFor="let team of teamList"
-        [value]="team.id">{{team.name}}</option>
+        [value]="team.id"><span [hidden]="!isFiouse">{{team.company_id}}. </span>{{team.name}}</option>
 </select><br>
 First Name: <input type="text"
                 name="fname"

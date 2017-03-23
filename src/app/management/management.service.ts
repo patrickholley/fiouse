@@ -53,6 +53,23 @@ export class ManagementService {
       .subscribe(((data) => alert(data)))
   }
 
+  updateUser(user: any) {
+    const body = JSON.stringify({username: user.username,
+                                  first_name: user.first_name,
+                                  last_name: user.last_name,
+                                  email: user.email,
+                                  role: user.role,
+                                  password: user.password,
+                                  team_id: user.team_id,
+                                  session_id: localStorage.getItem('session_id'),
+                                  session_password: user.opassword
+                                })
+    return this.http.put(`${ManagementService.BASE_URL}/employee`, body, {
+      headers: this.headers
+    }).map((data: Response) => data.json())
+      .catch((this.handleError))
+  }
+
   private handleError (error: any) {
     alert(error._body)
     console.log(error)
