@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent {
+  isLoading = true
+  teamList = []
   user = {
-    team_id: 'Choose a team. . . .',
+    team_id: null,
     username: 'testerino',
     first_name: 'Tyler',
     last_name: 'Esterino',
@@ -19,16 +21,21 @@ export class UserAddComponent {
     cpassword: 'testerino',
     opassword: 'oacolenheim'
   }
-  isLoading = false
-  teamList = []
 
   constructor(private manageServ: ManagementService) {
-    this.manageServ.getEditTeamList().subscribe((teams) => this.teamList = teams)
+    this.manageServ.getEditTeamList().subscribe((teams) => {
+      this.teamList = teams
+      this.isLoading = false
+    })
   }
 
   onSubmit() {
     if (this.user.password == this.user.cpassword) {
-      this.manageServ.addUser(this.user)
+      if (this.user.team_id != 0) {
+        this.manageServ.addUser(this.user)
+      }
+      else alert('Please choose a team.')
     }
+    else alert('Passwords do not match. Please try again.')
   }
 }

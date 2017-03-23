@@ -19,7 +19,8 @@ export class ManagementService {
                                   last_name: user.last_name,
                                   email: user.email,
                                   role: user.role,
-                                  password: user.password
+                                  password: user.password,
+                                  team_id: user.team_id
                                 })
     return this.http.post(`${ManagementService.BASE_URL}/employee`, body, {
       headers: this.headers

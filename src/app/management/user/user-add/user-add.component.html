@@ -3,10 +3,12 @@
   Team: <select id="team"
                 name="team"
                 [(ngModel)]="user.team_id"
+                #t
+                (change)="user.team_id = t.value"
                 required>
-    <option>Choose a team. . . .</option>
+    <option value=""></option>
     <option *ngFor="let team of teamList"
-            [value]="team">{{team.name}}</option>
+            [value]="team.id">{{team.name}}</option>
   </select><br>
   Username: <input type="text"
                     name="uname"

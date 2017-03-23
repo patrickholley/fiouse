@@ -11,7 +11,8 @@ module.exports = {
                 req.body.username,
                 config.encrypt(req.body.password),
                 req.body.email,
-                req.body.role
+                req.body.role,
+                req.body.team_id
             ], (err) => {
                 if (err) res.status(500).send(err)
                 else res.status(200).json('Successfully added.')
@@ -22,7 +23,7 @@ module.exports = {
             if (err) res.status(500).send(err)
             else {
                 if (t_permissions[0].fiouse) {
-                    db.getTeamsFiouse ((err, teams) => {
+                    db.getFiouseTeamList ((err, teams) => {
                         if (err) res.status(500).send(err)
                         else res.status(200).send(teams)
                     })
@@ -34,7 +35,7 @@ module.exports = {
                     })
                 }
                 else if (t_permissions[0].base) {
-                    res.status(403).send('Cannot edit teams. Please contact your admin.')
+                    res.status(403).send('You have insufficient privileges to save changes here. Please contact your admin.')
                 }
                 else db.getEditTeamList ([t_permissions[0].team_id], (err, teams) => {
                     if (err) res.status(500).send(err)

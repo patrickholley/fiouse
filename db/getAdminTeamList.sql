@@ -1,1 +1,1 @@
-select * from team where company_id = $1;
+select * from team where company_id = $1 and name != '_Admin';
