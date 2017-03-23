@@ -11,6 +11,7 @@ import { ManagementService } from "../management.service";
 export class UserComponent {
   userList = []
   isLoading = true
+  isEditing = false
   user: null
 
   constructor(private manageServ: ManagementService, private router: Router) {
@@ -25,8 +26,10 @@ export class UserComponent {
     })
   }
 
-  editUser(id) {
+  editUser() {
     this.manageServ.user = this.user
-    this.router.navigate(['management/user/edit'])
+    this.manageServ.user.password = ''
+    this.isEditing = true
+    this.router.navigate(['/management/edit-user'])
   }
 }

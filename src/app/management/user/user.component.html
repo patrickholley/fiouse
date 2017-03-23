@@ -1,7 +1,7 @@
-<h2>Users</h2>
 <div [hidden]="isLoading">
-<a [routerLink]="['add']">Add User</a><br>
-<div [hidden]="isEditing">
+<h2>Users</h2>
+<a [routerLink]="['/management/add-user']">Add User</a><br>
+<div>
 Edit User: <select id="user"
             name="user"
             [(ngModel)]="user"

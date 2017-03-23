@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ManagementService } from './../../management.service';
+import { ManagementService } from './../management.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -23,7 +24,7 @@ export class UserAddComponent {
     opassword: ''
   }
 
-  constructor(private manageServ: ManagementService) {
+  constructor(private manageServ: ManagementService, private router: Router) {
     this.manageServ.getEditTeamList().subscribe((teams) => {
       this.teamList = teams.sort((a, b) => {
         if (a.name < b.name) return -1
@@ -37,7 +38,10 @@ export class UserAddComponent {
   onSubmit() {
     if (this.user.password == this.user.cpassword) {
       if (this.user.team_id != 0) {
-        this.manageServ.addUser(this.user)
+        this.manageServ.addUser(this.user).subscribe((data) => {
+          alert(data)
+          this.router.navigate(['management/user'])
+        })
       }
       else alert('Please choose a team.')
     }

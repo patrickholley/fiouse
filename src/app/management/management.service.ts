@@ -29,7 +29,6 @@ export class ManagementService {
       headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
-      .subscribe((data) => alert(data))
   }
 
   getEditTeamList() {

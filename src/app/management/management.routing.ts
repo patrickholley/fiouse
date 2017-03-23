@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router'
 import { TeamComponent } from './team/team.component';
 import { TeamEditComponent } from './team/team-edit/team-edit.component';
 import { TeamAddComponent } from './team/team-add/team-add.component';
-import { UserAddComponent } from './user/user-add/user-add.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserComponent } from './user/user.component';
 import { ManagementComponent } from './management.component';
 
@@ -17,11 +17,9 @@ export const MANAGEMENT_ROUTES: Routes = [
                 { path: 'edit', component: TeamEditComponent },
                 { path: '**', redirectTo: '', pathMatch: 'full' }
             ] },
-            { path: 'user', component: UserComponent, children: [
-                { path: 'add', component: UserAddComponent },
-                { path: 'edit', component: UserEditComponent },
-                { path: '**', redirectTo: '', pathMatch: 'full' }
-            ] },
+            { path: 'user', component: UserComponent },
+            { path: 'add-user', component: UserAddComponent },
+            { path: 'edit-user', component: UserEditComponent },
             { path: '**', redirectTo: '', pathMatch: 'full' },
         ] },
 ]
