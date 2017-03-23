@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent {
+  route = "Add"
   isLoading = true
   teamList = []
   user = {
@@ -24,7 +25,11 @@ export class UserAddComponent {
 
   constructor(private manageServ: ManagementService) {
     this.manageServ.getEditTeamList().subscribe((teams) => {
-      this.teamList = teams
+      this.teamList = teams.sort((a, b) => {
+        if (a.name < b.name) return -1
+        else if (b.name < a.name) return 1
+        else return -1
+      })
       this.isLoading = false
     })
   }

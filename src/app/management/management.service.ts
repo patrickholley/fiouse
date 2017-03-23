@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs/Rx'
 export class ManagementService {
   static BASE_URL: string = 'http://localhost:3000'
   headers: Headers
+  user: any
 
   constructor(private http: Http) {
     this.headers = new Headers()

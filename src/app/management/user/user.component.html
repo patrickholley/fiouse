@@ -1,12 +1,15 @@
 <h2>Users</h2>
+<div [hidden]="isLoading">
+<a [routerLink]="['add']">Add User</a><br>
 Edit User: <select id="user"
-                name="user"
-                [(ngModel)]="user"
-                #t
-                (change)="editUser(t.value)"
-                required>
-    <option value=""></option>
-    <option *ngFor="let user of userList"
-            [value]="user.id">{{user.last_name}}, {{user.first_name}}</option>
-    </select><br>
+            name="user"
+            [(ngModel)]="user"
+            #t
+            (change)="editUser(t.value)"
+            required>
+<option value=""></option>
+<option *ngFor="let user of userList"
+        [value]="user.id">{{user.last_name}}, {{user.first_name}}</option>
+</select><br>
+</div>
 <router-outlet></router-outlet>

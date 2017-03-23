@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LoginService } from './../../login/login.service';
 import { Component } from '@angular/core';
 import { ManagementService } from "../management.service";
@@ -10,8 +11,9 @@ import { ManagementService } from "../management.service";
 export class UserComponent {
   userList = []
   isLoading = true
+  user: null
 
-  constructor(private manageServ: ManagementService) {
+  constructor(private manageServ: ManagementService, private router: Router) {
     this.manageServ.getEditUserList().subscribe((users) => {
       this.userList = users.sort((a, b) => {
         if (a.last_name < b.last_name) return -1
@@ -24,6 +26,7 @@ export class UserComponent {
   }
 
   editUser(user) {
-
+    this.manageServ.user = user
+    this.router.navigate(['management/user/edit'])
   }
 }

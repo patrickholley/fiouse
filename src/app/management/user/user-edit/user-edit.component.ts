@@ -1,3 +1,4 @@
+import { ManagementService } from './../../management.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,8 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
-  @Input() user:any
-  constructor() { }
+  route = "Edit"
+  user: any
+  constructor(private manageServ: ManagementService) {
+    this.user = manageServ.user
+    console.log(this.user)
+  }
 
   ngOnInit() {
   }
