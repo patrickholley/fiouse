@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs/Rx'
 
 @Injectable()
 export class LoginService {
-  static BASE_URL: string = 'http://138.68.244.22/'
+  static BASE_URL: string = 'http://138.68.244.22'
   headers: Headers
 
   private logger = new Subject<boolean>()
