@@ -22,6 +22,7 @@ export class ManagementService {
                                   role: user.role,
                                   password: user.password,
                                   team_id: user.team_id,
+                                  reports_to_id: user.reports_to_id,
                                   session_id: localStorage.getItem('session_id'),
                                   session_password: user.opassword
                                 })

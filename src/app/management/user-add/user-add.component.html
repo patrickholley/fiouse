@@ -1,5 +1,4 @@
 <section [hidden]="isLoading">
-<hr>
 <h3>{{route}} User</h3>
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 Username: <input type="text"
@@ -17,7 +16,7 @@ Team: <select id="team"
         required>
 <option value=""></option>
 <option *ngFor="let team of teamList"
-        [value]="team.id"><span [hidden]="!isFiouse">{{team.company_id}}. </span>{{team.name}}</option>
+        [value]="team.id"><span *ngIf="isFiouse">{{team.company_id}}. </span>{{team.name}}</option>
 </select><br>
 First Name: <input type="text"
                 name="fname"
@@ -51,6 +50,15 @@ Role: <input type="text"
         id="role"
         [(ngModel)]="user.role"
         required><br>
+Reports To (Optional): <select id="reports_to"
+        name="reports_to"
+        [(ngModel)]="user.reports_to_id"
+        #r
+        (change)="user.reports_to_id = r.value">
+<option value=""></option>
+<option *ngFor="let reportsTo of userList"
+        [value]="reportsTo.id"><span *ngIf="isFiouse">{{reportsTo.company_id}}. </span>{{reportsTo.last_name}}, {{reportsTo.first_name}}</option>
+</select><br>
 <hr>
 To save these changes, please enter your password below and hit "Save".<br>
 <input type="password"

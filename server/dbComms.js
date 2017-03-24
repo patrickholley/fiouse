@@ -17,7 +17,8 @@ module.exports = {
                     config.encrypt(req.body.password),
                     req.body.email,
                     req.body.role,
-                    req.body.team_id
+                    req.body.team_id,
+                    req.body.reports_to_id
                 ], (err) => {
                 if (err) res.status(500).send(err)
                 else res.status(200).json('Successfully added.')
