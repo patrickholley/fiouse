@@ -89,7 +89,6 @@ module.exports = {
     },
     getViewEmployeeList: (req, res) => {
         db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
-            console.log(config.decrypt(req.params.session_id))
             if (err) res.status(500).send(err)
             else if (!t_permissions[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
             else {
