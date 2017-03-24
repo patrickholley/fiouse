@@ -48,15 +48,13 @@ create table permission (
 insert into permission (name)
 values ('View User in Team'); /*View details of a single user in a team*/
 insert into permission (name)
-values ('Add User in Team'); /*Add new user to a team*/
+values ('Create User in Team'); /*Add new user to a team*/
 insert into permission (name)
 values ('Edit User in Team'); /*Edit a user's details in a team*/
 insert into permission (name)
 values ('Delete User in Team'); /*Delete user in a team*/
 insert into permission (name)
 values ('View Team'); /*View user list of a team*/
-insert into permission (name)
-values ('Edit User List in Team'); /*View details of a single user in a team*/
 insert into permission (name)
 values ('Create Team'); /*Create a new team*/
 insert into permission (name)

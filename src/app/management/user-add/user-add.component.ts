@@ -65,4 +65,8 @@ export class UserAddComponent {
     }
     else alert('Passwords do not match. Please try again.')
   }
+
+  onCancel() {
+    this.router.navigate(['management/user'])
+  }
 }

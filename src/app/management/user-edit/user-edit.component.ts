@@ -74,4 +74,18 @@ export class UserEditComponent {
       alert('Passwords do not match. Please try again.')
     }
   }
+
+  onCancel() {
+    this.router.navigate(['management/user'])
+  }
+
+  onDelete() {
+    if(confirm('Are you sure you wish to delete this user? You cannot revert this decision.')) {
+      this.manageServ.deleteUser(this.user).subscribe((data) => {
+        alert(data)
+        this.router.navigate(['management/user'])      
+      })
+    }
+    else alert('Delete aborted.')
+  }
 }

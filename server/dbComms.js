@@ -23,6 +23,42 @@ module.exports = {
             })
         })
     },
+    deleteEmployee: (req, res) => {
+        db.getEmployeeBySession([config.decrypt(req.body.session_id)], (err, user) => {
+            if (err) res.status(500).send(err)
+            else if (!user[0] || config.decrypt(user[0].password) != req.body.session_password) {
+                res.status(403).json(`Invalid credentials. Please re-enter your password. If that does not work, log out and back in, then attempt again. If the issue continues to persist, contact your admin.`)
+            }
+            else db.getTeamPermissionBySession ([config.decrypt(req.body.session_id)], (err, t_permissions) => {
+                if (err) res.status(500).send(err)
+                else if (!t_permissions[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+                else {
+                    if (t_permissions[0].fiouse) {
+                        db.deleteEmployee ([req.body.id], (err) => {
+                            if (err) res.status(500).send(err)
+                            else res.status(200).json('Delete successful.')
+                        })
+                    }
+                    else if (t_permissions[0].admin) {
+                        db.deleteEmployee ([req.body.id], (err) => {
+                            if (err) res.status(500).send(err)
+                            else res.status(200).json('Delete successful.')
+                        })
+                    }
+                    else if (t_permissions[0].base) {
+                        res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+                    }
+                    else db.getDeleteEmployee ([t_permissions[0].team_id, req.body.id], (err, employee) => {
+                        if (err) res.status(500).send(err)
+                        else if (!employee[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
+                        else db.deleteEmployee([employee[0].id], (err) => {
+                            res.status(200).json('Delete successful.')
+                        })
+                    })
+                }
+            })
+        })
+    },
     getEditTeamList: (req, res) => {
         db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
             if (err) res.status(500).send(err)
@@ -43,7 +79,7 @@ module.exports = {
                 else if (t_permissions[0].base) {
                     res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                 }
-                else db.getEditTeamList ([t_permissions[0].team_id], (err, teams) => {
+                else db.getViewTeamList ([t_permissions[0].team_id], (err, teams) => {
                     if (err) res.status(500).send(err)
                     else if (!teams[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                     else res.status(200).send(teams)
