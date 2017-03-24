@@ -11,6 +11,7 @@ const conn = massive.connectSync({
 });
 app.set('db', conn);
 const db = app.get('db');
+app.use(express.static('./dist'))
 
 let transporter = nodemailer.createTransport({
     service: "gmail",
@@ -25,7 +26,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const dbComms = require('./dbComms')
-const port = 3000
+const port = 80
 
 app.post('/contact', (req, res) => {
     transporter.sendMail({
