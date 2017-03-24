@@ -10,16 +10,14 @@ module.exports = {
                 res.status(403).json(`Invalid credentials. Please re-enter your password. If that does not work, log out and back in, then attempt again. If the issue continues to persist, contact your admin.`)
             }
             else db.createEmployee(
-                [
-                    req.body.first_name,
-                    req.body.last_name,
-                    req.body.username,
-                    config.encrypt(req.body.password),
-                    req.body.email,
-                    req.body.role,
-                    req.body.team_id,
-                    req.body.reports_to_id
-                ], (err) => {
+                [req.body.first_name,
+                req.body.last_name,
+                req.body.username,
+                config.encrypt(req.body.password),
+                req.body.email,
+                req.body.role,
+                req.body.team_id,
+                req.body.reports_to_id], (err) => {
                 if (err) res.status(500).send(err)
                 else res.status(200).json('Successfully added.')
             })
@@ -81,6 +79,25 @@ module.exports = {
             }
         })
     },
+    getReportsToList: (req, res) => {
+        db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
+            if (err) res.status(500).send(err)
+            else {
+                if (t_permissions[0].fiouse) {
+                    db.getFiouseEmployeeList ((err, employees) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(employees)
+                    })
+                }
+                else {
+                    db.getReportsToList([config.decrypt(req.params.session_id)], (err, employees) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).send(employees)
+                    })
+                }
+            }
+        })
+    },
     getSession: (req, res) => {
         db.getSession([config.decrypt(req.params.id)], (err, session) => {
             if (err) res.status(500).send(err)
@@ -120,6 +137,43 @@ module.exports = {
             if (err) res.status(500).send(err)
             else if (req.body.command != 'RESET') res.status(403).send('The wrong command was entered. Reset aborted.')
             else res.status(200).json('Server reset successfully.')
+        })
+    },
+    updateEmployee: (req, res) => {
+        db.getEmployeeBySession([config.decrypt(req.body.session_id)], (err, user) => {
+            if (err) res.status(500).send(err)
+            else if (!user[0] || config.decrypt(user[0].password) != req.body.session_password) {
+                res.status(403).json(`Invalid credentials. Please re-enter your password. If that does not work, log out and back in, then attempt again. If the issue continues to persist, contact your admin.`)
+            }
+            else {
+                if (req.body.password != '') {
+                    db.updateEmployeeWithPassword(
+                            [req.body.first_name,
+                            req.body.last_name,
+                            req.body.id,
+                            config.encrypt(req.body.password),
+                            req.body.email,
+                            req.body.role,
+                            req.body.team_id,
+                            req.body.reports_to_id], (err) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).json('Successfully updated.')
+                    })
+                }
+                else {
+                    db.updateEmployeeWithoutPassword(
+                            [req.body.first_name,
+                            req.body.last_name,
+                            req.body.id,
+                            req.body.email,
+                            req.body.role,
+                            req.body.team_id,
+                            req.body.reports_to_id], (err) => {
+                        if (err) res.status(500).send(err)
+                        else res.status(200).json('Successfully updated.')
+                    })
+                }
+            }
         })
     }
 }

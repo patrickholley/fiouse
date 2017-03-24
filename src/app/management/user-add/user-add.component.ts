@@ -30,7 +30,7 @@ export class UserAddComponent {
 
   constructor(private manageServ: ManagementService, private router: Router) {
     this.manageServ.getEditTeamList().subscribe((teams) => {
-      this.manageServ.getEditUserList().subscribe((users) => {
+      this.manageServ.getReportsToList().subscribe((users) => {
         this.teamList = teams.sort((a, b) => {
           if (a.company_id < b.company_id) return -1
           else if (b.company_id < a.company_id) return 1

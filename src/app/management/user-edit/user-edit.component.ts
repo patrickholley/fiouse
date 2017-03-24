@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 export class UserEditComponent {
   route = "Edit"
   user = {
+    id: null,
     team_id: null,
     username: '',
     first_name: '',
@@ -30,7 +31,7 @@ export class UserEditComponent {
   constructor(private manageServ: ManagementService, private router: Router) {
     if (manageServ.user) {
       this.manageServ.getEditTeamList().subscribe((teams) => {
-        this.manageServ.getEditUserList().subscribe((users) => {
+        this.manageServ.getReportsToList().subscribe((users) => {
           this.teamList = teams.sort((a, b) => {
             if (a.company_id < b.company_id) return -1
             else if (b.company_id < a.company_id) return 1
@@ -46,6 +47,8 @@ export class UserEditComponent {
             else return 1
           })
           this.user = manageServ.user
+          this.user.password = ''
+          this.user.cpassword = ''
           this.isLoading = false
           for (let i = 0; i < this.teamList.length; i++) {
             if (this.teamList[i].id == 1) {
@@ -66,6 +69,9 @@ export class UserEditComponent {
         this.router.navigate(['management/user'])
       })
     }
-    else alert('Passwords do not match. Please try again.')
+    else {
+      console.log("UP: ", this.user.password, " CP: ", this.user.cpassword)
+      alert('Passwords do not match. Please try again.')
+    }
   }
 }
