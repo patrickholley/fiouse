@@ -79,7 +79,7 @@ module.exports = {
                 else if (t_permissions[0].base) {
                     res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                 }
-                else db.getViewTeamList ([t_permissions[0].team_id], (err, teams) => {
+                else db.getEditTeamList ([t_permissions[0].team_id], (err, teams) => {
                     if (err) res.status(500).send(err)
                     else if (!teams[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                     else res.status(200).send(teams)
@@ -87,8 +87,9 @@ module.exports = {
             }
         })
     },
-    getEditEmployeeList: (req, res) => {
+    getViewEmployeeList: (req, res) => {
         db.getTeamPermissionBySession ([config.decrypt(req.params.session_id)], (err, t_permissions) => {
+            console.log(config.decrypt(req.params.session_id))
             if (err) res.status(500).send(err)
             else if (!t_permissions[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
             else {
@@ -107,7 +108,7 @@ module.exports = {
                 else if (t_permissions[0].base) {
                     res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                 }
-                else db.getEditEmployeeList ([t_permissions[0].team_id], (err, employees) => {
+                else db.getViewEmployeeList ([t_permissions[0].team_id], (err, employees) => {
                     if (err) res.status(500).send(err)
                     else if (!employees[0]) res.status(403).send('You have insufficient privileges to make changes here. Please contact your admin.')
                     else res.status(200).send(employees)

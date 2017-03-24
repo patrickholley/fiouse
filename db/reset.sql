@@ -152,6 +152,8 @@ values (3, 15, true);
 insert into team_permission (company_id, team_id, managed_team_id, permission_ids)
 values (3, 4, 5, '{1, 2, 3, 4, 5, 6, 7, 8}');
 insert into team_permission (company_id, team_id, managed_team_id, permission_ids)
+values (3, 5, 5, '{1, 5}');
+insert into team_permission (company_id, team_id, managed_team_id, permission_ids)
 values (3, 6, 7, '{1, 2, 3, 4, 5, 6, 7, 8}');
 insert into team_permission (company_id, team_id, managed_team_id, permission_ids)
 values (3, 8, 9, '{1, 2, 3, 4, 5, 6, 7, 8}');

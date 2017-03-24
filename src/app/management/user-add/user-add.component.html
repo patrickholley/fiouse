@@ -1,13 +1,14 @@
 <section [hidden]="isLoading">
 <h3>{{route}} User</h3>
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-Username: <input type="text"
+<fieldset [disabled]="isView">
+<span *ngIf="!isView">Username: <input type="text"
                 name="uname"
                 id="uname"
                 [(ngModel)]="user.username"
                 [hidden]="isEdit"
                 required>
-<span [hidden]="!isEdit">{{user.username}}</span><br>
+<span [hidden]="!isEdit">{{user.username}}</span><br></span>
 Team: <select id="team"
         name="team"
         [(ngModel)]="user.team_id"
@@ -34,7 +35,7 @@ Email: <input type="text"
         [(ngModel)]="user.email"
         pattern=".+@.+"
         required><br>
-<span [hidden]="!isEdit">(Leave the next two fields blank to keep old password)<br></span>
+<span *ngIf="!isView"><span [hidden]="!isEdit">(Leave the next two fields blank to keep old password)<br></span>
 Password: 
 <input type="password"
         name="password"
@@ -44,7 +45,7 @@ Confirm Password<span [hidden]="!isEdit"></span>:
 <input type="password"
         name="cpassword"
         id="cpassword"
-        [(ngModel)]="user.cpassword"><br>
+        [(ngModel)]="user.cpassword"><br></span>
 Role: <input type="text"
         name="role"
         id="role"
@@ -59,7 +60,7 @@ Reports To (Optional): <select id="reports_to"
 <option *ngFor="let reportsTo of userList"
         [value]="reportsTo.id"><span *ngIf="isFiouse">{{reportsTo.company_id}}. </span>{{reportsTo.last_name}}, {{reportsTo.first_name}}</option>
 </select><br>
-<hr>
+<fieldset *ngIf="!isView">
 To save these changes, please enter your password below and hit "Save".<br>
 <input type="password"
         name="opassword"
@@ -67,7 +68,10 @@ To save these changes, please enter your password below and hit "Save".<br>
         [(ngModel)]="user.opassword"
         required><br>
 <button type="submit" class="btn btn-primary">Save</button>
-<button type=button (click)="onCancel()">Cancel</button><br>
 <button type=button (click)="onDelete()" [hidden]="!isEdit">Delete</button><br>
+</fieldset>
+</fieldset>
+<button type=button (click)="onEdit()">{{editor}}</button>
+<button type=button (click)="onCancel()">Back</button><br>
 </form>
 </section>

@@ -16,7 +16,7 @@ export class UserComponent {
   user: null
 
   constructor(private manageServ: ManagementService, private router: Router) {
-    this.manageServ.getEditUserList().subscribe((users) => {
+    this.manageServ.getViewUserList().subscribe((users) => {
       this.userList = users.sort((a, b) => {
         if (a.company_id < b.company_id) return -1
         else if (b.company_id < a.company_id) return 1
@@ -35,7 +35,7 @@ export class UserComponent {
     })
   }
 
-  editUser() {
+  viewUser() {
     this.manageServ.user = this.user
     this.manageServ.user.password = ''
     this.isEditing = true

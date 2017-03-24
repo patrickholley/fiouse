@@ -56,7 +56,7 @@ app.put('/employee', dbComms.updateEmployee)
 app.delete('/employee', dbComms.deleteEmployee)
 app.get('/team/:session_id', dbComms.getTeams)
 app.get('/edit-team/:session_id', dbComms.getEditTeamList)
-app.get('/edit-employee/:session_id', dbComms.getEditEmployeeList)
+app.get('/view-employee/:session_id', dbComms.getViewEmployeeList)
 
 //for testing purposes
 app.put('/encrypt', (req, res) => {

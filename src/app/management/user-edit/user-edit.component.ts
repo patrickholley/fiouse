@@ -22,11 +22,14 @@ export class UserEditComponent {
     cpassword: '',
     opassword: ''
   }
+  baseUser
   teamList
   userList
   isLoading = true
   isEdit = true
   isFiouse = false
+  isView = true
+  editor = 'Edit'
   
   constructor(private manageServ: ManagementService, private router: Router) {
     if (manageServ.user) {
@@ -49,6 +52,7 @@ export class UserEditComponent {
           this.user = manageServ.user
           this.user.password = ''
           this.user.cpassword = ''
+          this.baseUser = Object.assign({}, this.user)
           this.isLoading = false
           for (let i = 0; i < this.teamList.length; i++) {
             if (this.teamList[i].id == 1) {
@@ -60,6 +64,13 @@ export class UserEditComponent {
       })
     }
     else router.navigate(['management/user'])
+  }
+
+  onEdit() {
+    if (this.editor == 'Cancel') this.editor = 'Edit'
+    else this.editor = 'Cancel'
+    this.isView = !this.isView
+    this.user = Object.assign({}, this.baseUser)
   }
 
   onSubmit() {

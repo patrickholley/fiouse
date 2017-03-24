@@ -2,11 +2,11 @@
 <h2>Users</h2>
 <a [routerLink]="['/management/add-user']">Add User</a><br>
 <div>
-Edit User: <select id="user"
+View User: <select id="user"
             name="user"
             [(ngModel)]="user"
             #t
-            (change)="editUser(t.value)"
+            (change)="viewUser()"
             required>
 <option value=""></option>
 <option *ngFor="let user of userList"

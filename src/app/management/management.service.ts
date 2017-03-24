@@ -50,8 +50,8 @@ export class ManagementService {
       .catch((this.handleError))
   }
 
-  getEditUserList() {
-    return this.http.get(`${ManagementService.BASE_URL}/edit-employee/${localStorage.getItem('session_id')}`, {
+  getViewUserList() {
+    return this.http.get(`${ManagementService.BASE_URL}/view-employee/${localStorage.getItem('session_id')}`, {
       headers: this.headers
     }).map((data: Response) => data.json())
       .catch((this.handleError))
