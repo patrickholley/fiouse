@@ -5,7 +5,9 @@ const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const config = require('./config')
 const massive = require('massive')
+const cors = require('cors')
 const app = module.exports = express()
+app.use(cors())
 const conn = massive.connectSync({
   connectionString : config.eleSql
 });
