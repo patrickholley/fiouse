@@ -1,4 +1,3 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +28,7 @@ import { AuthGuard } from "./login/auth.guard";
     HttpModule,
     routing
   ],
-  providers: [AuthGuard, ContactService, LoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [AuthGuard, ContactService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
