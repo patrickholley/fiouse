@@ -72,7 +72,7 @@ To save these changes, please enter your password below and hit "Save".<br>
 <button type=button (click)="onDelete()" [hidden]="!isEdit">Delete</button><br>
 </fieldset>
 </fieldset>
-<button type=button (click)="onEdit()">{{editor}}</button>
+<span *ngIf="isEdit"><button type=button (click)="onEdit()">{{editor}}</button></span>
 <button type=button (click)="onCancel()">Back</button><br>
 </form>
 </section>

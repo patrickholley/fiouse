@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const dbComms = require('./dbComms')
-const port = 80
+const port = config.port
 
 app.post('/contact', (req, res) => {
     transporter.sendMail({

@@ -47,12 +47,6 @@ export class UserEditComponent {
         this.user.cpassword = ''
         this.baseUser = Object.assign({}, this.user)
         this.isLoading = false
-        for (let i = 0; i < this.teamList.length; i++) {
-          if (this.teamList[i].id == 1) {
-            this.isFiouse = true
-            break
-          }
-        }
       })
     }
     else router.navigate(['management/user'])
@@ -66,6 +60,12 @@ export class UserEditComponent {
         else if (a.name < b.name) return -1
         else return 1
       })
+      for (let i = 0; i < this.teamList.length; i++) {
+        if (this.teamList[i].id == 1) {
+          this.isFiouse = true
+          break
+        }
+      }
       if (this.editor == 'Cancel') this.editor = 'Edit'
       else this.editor = 'Cancel'
       this.isView = !this.isView

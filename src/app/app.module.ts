@@ -1,12 +1,13 @@
-import { ManagementModule } from './management/management.module';
-import { LoginService } from './login/login.service';
-import { ContactService } from './contact/contact.service';
-import { routing } from './app.routing';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { ManagementModule } from './management/management.module';
+import { LoginService } from './login/login.service';
+import { ContactService } from './contact/contact.service';
+import { routing } from './app.routing';
 import { UserComponent } from './management/user/user.component';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +29,7 @@ import { AuthGuard } from "./login/auth.guard";
     HttpModule,
     routing
   ],
-  providers: [AuthGuard, ContactService, LoginService],
+  providers: [AuthGuard, ContactService, LoginService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
