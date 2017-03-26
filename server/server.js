@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const dbComms = require('./dbComms')
 const port = config.port
 
-app.post('/contact', (req, res) => {
+app.post('/api/contact', (req, res) => {
     transporter.sendMail({
         from: config.email,
         to: 'patrick_holley@outlook.com',
