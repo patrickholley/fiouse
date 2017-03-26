@@ -19,6 +19,10 @@ export class LoginService {
     }
   }
 
+  contact() {
+    this.router.navigate(['contact'])
+  }
+
   getLoggedIn() {
     if (!localStorage.getItem('session_id')) return false
     else return true

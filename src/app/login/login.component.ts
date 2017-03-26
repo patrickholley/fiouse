@@ -21,7 +21,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    this.isLoggingIn = true
     this.loginService.login(this.login)
+    setTimeout(() => {
+      this.isLoggingIn = false
+    }, 1000)
+  }
+
+  onContact() {
+    this.loginService.contact()
   }
 
   onReset() {
