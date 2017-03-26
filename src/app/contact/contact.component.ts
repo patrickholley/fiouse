@@ -9,6 +9,7 @@ import { ContactService } from './contact.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  isEmailing = false
 
   constructor(private contactService: ContactService) { }
   contact = {
@@ -23,10 +24,14 @@ export class ContactComponent {
   }
 
   onSubmit(form: NgForm) {
+    this.isEmailing = true
     this.contactService.submitForm(this.contact)
     this.contact.company = ''
     this.contact.name = ''
     this.contact.phone = ''
     this.contact.email = ''
+    setTimeout(() => {
+      this.isEmailing = false
+    }, 1000)
   }
 }

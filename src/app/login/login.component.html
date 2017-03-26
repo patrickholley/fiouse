@@ -29,4 +29,5 @@
     </form>
   </div>
   <div class="loader" *ngIf="this.isLoggingIn"></div>
+  <div class="error message" *ngIf="submitError">{{submitErrorMessage}}</div>
 </div>

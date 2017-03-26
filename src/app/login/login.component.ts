@@ -10,6 +10,8 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   loggedIn = this.loginService.getLoggedIn()
   isLoggingIn = false
+  submitError = false
+  submitErrorMessage = ''
 
   constructor(private loginService: LoginService, private router: Router) {
     if (this.loggedIn) this.router.navigate(['home'])
@@ -23,6 +25,8 @@ export class LoginComponent {
   onSubmit() {
     this.isLoggingIn = true
     this.loginService.login(this.login)
+    this.login.username = ''
+    this.login.password = ''
     setTimeout(() => {
       this.isLoggingIn = false
     }, 1000)
