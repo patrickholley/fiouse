@@ -1,34 +1,59 @@
-<h2>Contact Us</h2>
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <h3>Interested in signing up with Fiouse?</h3>
-  <p>Please enter your information below, and we will contact you shortly.</p>
-  Company: <input type="text"
-                  name="company"
-                  id="company"
-                  [(ngModel)]="contact.company"                  
-                  required><br>
-  Name of Contact: <input type="text"
-                          name="name"
-                          id="name"
-                          [(ngModel)]="contact.name"                                  
-                          required><br>
-  Contact's Phone: <input type="text"
-                          name="phone"
-                          id="phone"
-                          [(ngModel)]="contact.phone"
-                          required><br>
-  Contact's Email: <input type="text"
-                          name="email"
-                          id="email"
-                          pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
-                          [(ngModel)]="contact.email"
-                          required><br>
-  <button type="submit"
-          class="btn btn-primary"
-          [disabled]="!f.valid">Submit</button>
-  <hr>
-  <p>Alternatively, you may contact us.</p>
-  <p>Phone: 029 004 1991</p>
-  <p>Email: contact@fiouse.com</p>
-  <a [routerLink]="['/login']">Return to Login</a>
-</form>
+<div class="navBar"></div>
+<div class="contactBody">
+<div class="logoRow">
+  <img src="src/fiouse-short.jpg">
+  <p style="font-size: 3rem" class="sans-serif">Contact Us</p>
+</div>
+<div class="contactForm serif">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <h3>Interested in signing up with Fiouse?</h3>
+    <p>Please submit your information below, and we will contact you shortly.</p>
+    <div class="field">
+      <span class="fieldName">Company:</span>
+      <input type="text"
+              name="company"
+              id="company"
+              class="inputField"
+              [(ngModel)]="contact.company"                  
+              required><br>
+    </div>
+    <div class="field">
+      <span class="fieldName">Who is our Contact?</span>
+      <input type="text"
+              name="name"
+              id="name"
+              class="inputField"
+              [(ngModel)]="contact.name"                                  
+              required><br>
+    </div>
+    <div class="field">
+      <span class="fieldName">Contact's Phone:</span>
+      <input type="text"
+              name="phone"
+              id="phone"
+              class="inputField"
+              [(ngModel)]="contact.phone"
+              required><br>
+    </div>
+    <div class="field">
+      <span class="fieldName">Contact's Email:</span>
+      <input type="text"
+              name="email"
+              id="email"
+              class="inputField"
+              pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+              [(ngModel)]="contact.email"
+              required><br>
+    </div>
+    <button type="submit"
+            style="margin-top:5%;"
+            class="contactButton serif"
+            [disabled]="!f.valid">Submit</button>
+    <hr>
+    <h4>Alternatively, you may contact us.</h4>
+    <p>Phone: 029 004 1991</p>
+    <p>Email: contact@fiouse.com</p>
+    <span class="contactButton serif" (click)="onLogin()">Return to Login</span>
+  </form>
+</div>
+</div>

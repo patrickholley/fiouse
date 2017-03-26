@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx'
@@ -6,7 +7,11 @@ import { Observable } from 'rxjs/Rx'
 @Injectable()
 export class ContactService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
+
+  backToLogin() {
+    this.router.navigate(['login'])
+  }
 
   submitForm(contact: any) {
     const body = JSON.stringify(contact)

@@ -18,6 +18,10 @@ export class ContactComponent {
     email: ''
   }
 
+  onLogin() {
+    this.contactService.backToLogin()
+  }
+
   onSubmit(form: NgForm) {
     this.contactService.submitForm(this.contact)
     this.contact.company = ''

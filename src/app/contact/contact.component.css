@@ -1,0 +1,89 @@
+.contactBody {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(90, 90, 90);
+}
+
+.contactButton {
+    padding: 5px 25px;
+    background-color: rgb(120, 155, 125);
+    color: white;
+    border-radius: 10px;
+    border:none;
+    outline: none;
+    margin-bottom: 5%;
+}
+
+.contactButton:hover {
+    background-color: white;
+    color: rgb(120, 155, 125);
+}
+
+.contactForm {
+    background-color: rgb(225, 230, 215);
+    padding: 25px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.inputField {
+    color: rgb(90, 90, 90);
+    background-color: rgba(255, 255, 255, 0.75);
+    outline: none;
+    border: 1px solid rgb(120, 155, 125);
+    border-radius: 10px;
+    padding-left:10px;
+    font-size:1.2rem;
+    width: 100%;
+    height: 25px;
+    display: flex;
+    text-align: left;
+    justify-content: flex-end;
+    margin: 5px;
+}
+
+.field {
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+}
+
+.fieldName {
+    margin: 5px;
+    width: 50%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logoRow {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logoRow img {
+    height: 100px;
+    width: 100px;
+    margin-right: 25px;
+}
+
+.navBar {
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(120, 155, 125);
+}
+
+.serif {
+    font-family: serif;
+}
+
+.sans-serif {
+    font-family: sans-serif;
+}
