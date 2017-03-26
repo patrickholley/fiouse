@@ -10,6 +10,11 @@
         <li (click)="onLogout()">Logout</li>
     </ul>
 </nav>
+<div class="mgmtNav">
+    <ul class="mgmtLinks serif">
+        <li><a [routerLink]="['user']">Users</a></li>
+    </ul>
+</div>
 <div class="mgmtBody">
-    <router-outlet><a [routerLink]="['user']">Users</a><br></router-outlet>
+    <router-outlet></router-outlet>
 </div>

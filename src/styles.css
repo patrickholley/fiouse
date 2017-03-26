@@ -70,12 +70,13 @@
 .navLinks {
     display:flex;
     flex-direction:row;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
 .navLinks li {
     display:flex;
     align-items: center;
-    height:50px;
     margin-right: 10%;
     text-transform: uppercase;
 }
@@ -95,4 +96,12 @@
 
 .sans-serif {
     font-family: sans-serif;
+}
+
+@media (max-width: 450px) {
+    .navLinks {
+        font-size: 1rem;
+        padding-left: 25px;
+        flex-direction: column;
+    }
 }

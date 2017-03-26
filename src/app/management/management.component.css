@@ -1,0 +1,40 @@
+.mgmtBody {
+    height: 75vh;
+}
+
+.mgmtNav {
+    height: 5vh;
+    min-height: 25px;
+    background-color: rgb(225, 230, 215);
+    color: rgb(90, 90, 90);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.mgmtLinks a {
+    color: rgb(90, 90, 90);
+    text-decoration: none;
+}
+
+.mgmtLinks a:visited {
+    color: rgb(90, 90, 90);
+}
+
+.mgmtLinks {
+    display:flex;
+    flex-direction:row;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.mgmtLinks li {
+    display:flex;
+    align-items: center;
+    margin-right: 10%;
+    text-transform: uppercase;
+}
+
+.mgmtLinks li:hover {
+    text-decoration:underline;
+}

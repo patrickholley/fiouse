@@ -1,3 +1,17 @@
 .homeBody {
     height: 80vh;
+    border: 0px solid blue;    
+}
+
+.homeBody h1 {
+    margin: 0;
+}
+
+.homeBox {
+    width: 30%;
+    margin: 0 auto;
+    padding: 25px;
+    border: 0px solid blue;
+    border-radius: 25px;
+    background-color: rgb(225, 230, 215);
 }
