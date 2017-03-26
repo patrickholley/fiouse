@@ -49,17 +49,17 @@ app.post('/contact', (req, res) => {
     res.status(200).json(`Email sent.`)
 })
 
-app.post('/login', dbComms.login)
-app.delete('/logout', dbComms.logout)
-app.put('/reset', dbComms.reset)
-app.get('/session/:id', dbComms.getSession)
-app.get('/employee/:session_id', dbComms.getReportsToList)
-app.post('/employee', dbComms.createEmployee)
-app.put('/employee', dbComms.updateEmployee)
-app.delete('/employee', dbComms.deleteEmployee)
-app.get('/team/:session_id', dbComms.getTeams)
-app.get('/edit-team/:session_id', dbComms.getEditTeamList)
-app.get('/view-employee/:session_id', dbComms.getViewEmployeeList)
+app.post('/api/login', dbComms.login)
+app.delete('/api/logout', dbComms.logout)
+app.put('/api/reset', dbComms.reset)
+app.get('/api/session/:id', dbComms.getSession)
+app.get('/api/employee/:session_id', dbComms.getReportsToList)
+app.post('/api/employee', dbComms.createEmployee)
+app.put('/api/employee', dbComms.updateEmployee)
+app.delete('/api/employee', dbComms.deleteEmployee)
+app.get('/api/team/:session_id', dbComms.getTeams)
+app.get('/api/edit-team/:session_id', dbComms.getEditTeamList)
+app.get('/api/view-employee/:session_id', dbComms.getViewEmployeeList)
 
 //for testing purposes
 app.put('/encrypt', (req, res) => {

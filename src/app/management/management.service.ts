@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs/Rx'
 
 @Injectable()
 export class ManagementService {
-  static BASE_URL: string = 'http://138.68.244.22'
+  static BASE_URL: string = 'http://138.68.244.22/api'
   headers: Headers
   user: any
 

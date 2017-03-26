@@ -17,7 +17,7 @@ export class ContactService {
     const body = JSON.stringify(contact)
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://138.68.244.22/contact', body, {
+    return this.http.post('http://138.68.244.22/api/contact', body, {
       headers: headers
     }).map((data: Response) => data.json())
       .catch(this.handleError)
