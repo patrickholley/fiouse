@@ -1,5 +1,15 @@
-<a [routerLink]="['/']">Home</a><br>
-<a [routerLink]="['user']">Users</a><br>
-<!--<a [routerLink]="['team']">Teams</a><br>-->
-<hr>
-<router-outlet></router-outlet>
+<nav class="navBar">
+    <div class="navImg">
+        <a [routerLink]="['/']">
+            <img class="navImg" src="src/fiouse-short.jpg">
+        </a>
+    </div>
+    <ul class="navLinks serif">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/management']">Management</a></li>
+        <li (click)="onLogout()">Logout</li>
+    </ul>
+</nav>
+<div class="mgmtBody">
+    <router-outlet><a [routerLink]="['user']">Users</a><br></router-outlet>
+</div>

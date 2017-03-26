@@ -1,3 +1,15 @@
-<h2>Home</h2>
-<a [routerLink]="['/management']">Management</a><br>
-<button type="submit" class="btn btn-primary" (click)="onLogout()">Logout</button>
+<nav class="navBar">
+    <div class="navImg">
+        <a [routerLink]="['/']">
+            <img class="navImg" src="src/fiouse-short.jpg">
+        </a>
+    </div>
+    <ul class="navLinks serif">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/management']">Management</a></li>
+        <li (click)="onLogout()">Logout</li>
+    </ul>
+</nav>
+<div class="homeBody">
+    
+</div>

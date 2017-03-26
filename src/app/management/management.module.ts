@@ -6,18 +6,12 @@ import { CommonModule } from '@angular/common';
 import { management_routing } from './management.routing';
 import { UserComponent } from './user/user.component';
 import { ManagementService } from './management.service';
-import { TeamComponent } from './team/team.component';
-import { TeamAddComponent } from './team-add/team-add.component';
-import { TeamEditComponent } from './team-edit/team-edit.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { ManagementComponent } from './management.component';
 
 @NgModule({
   declarations: [
-    TeamComponent,
-    TeamAddComponent,
-    TeamEditComponent,
     UserAddComponent,
     UserEditComponent,
     ManagementComponent,

@@ -1,4 +1,4 @@
-<div class="navBar"></div>
+<nav class="navBar"></nav>
 <div class="welcomeBox">
   <div class="logoBox">
     <img src="/src/fiouse-full.jpg">
@@ -21,11 +21,11 @@
               [(ngModel)]="login.password"
               [disabled]="isLoggingIn"
               required><br>
-      <button type="submit" class="loginButton serif" [disabled]="!f.valid || this.loginService.isLoggingIn">
+      <button type="submit" class="fButton serif" [disabled]="!f.valid || this.isLoggingIn">
         <span *ngIf="!this.isLoggingIn">Login</span>
         <span *ngIf="this.isLoggingIn">Please wait . . .</span>
       </button><br>
-      <span class="loginButton serif" (click)="onContact()">Don't have an account?</span>
+      <span class="fButton serif" (click)="onContact()">Don't have an account?</span>
     </form>
   </div>
   <div class="loader" *ngIf="this.isLoggingIn"></div>

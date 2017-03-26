@@ -1,3 +1,4 @@
+import { LoginService } from './../login/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './management.component.html',
   styleUrls: ['./management.component.css']
 })
-export class ManagementComponent implements OnInit {
+export class ManagementComponent {
+  constructor(private loginService: LoginService) { }
 
-  constructor() { }
+  isLoggingOut = false
 
-  ngOnInit() {
+  onLogout() {
+    this.loginService.logout()
   }
-
 }

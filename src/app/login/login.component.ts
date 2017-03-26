@@ -18,8 +18,8 @@ export class LoginComponent {
   }
 
   login = {
-    username: 'oacaholden',
-    password: 'oacaholden'
+    username: '',
+    password: ''
   }
 
   onSubmit() {
