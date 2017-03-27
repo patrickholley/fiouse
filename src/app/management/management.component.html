@@ -6,7 +6,7 @@
     </div>
     <ul class="navLinks serif">
         <li><a [routerLink]="['/']">Home</a></li>
-        <li><a [routerLink]="['/management']">Management</a></li>
+        <li><a [routerLink]="['/management/user']">Management</a></li>
         <li (click)="onLogout()">Logout</li>
     </ul>
 </nav>
@@ -15,6 +15,4 @@
         <li><a [routerLink]="['user']">Users</a></li>
     </ul>
 </div>
-<div class="mgmtBody">
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

@@ -1,16 +1,28 @@
-<div [hidden]="isLoading">
-<h2>Users</h2>
-<a [routerLink]="['/management/add-user']">Add User</a><br>
-<div>
-View User: <select id="user"
-            name="user"
-            [(ngModel)]="user"
-            #t
-            (change)="viewUser()"
-            required>
-<option value=""></option>
-<option *ngFor="let user of userList"
-        [ngValue]="user"><span *ngIf="isFiouse">{{user.company_id}}. </span>{{user.last_name}}, {{user.first_name}}</option>
-</select><br>
+<div class="userBody">
+        <div style="height: 10vh"> </div>
+        <div class="loader" *ngIf="isLoading"></div>
+        <p class="sans-serif" *ngIf="!isLoading" style="text-align: center; font-size: 2rem; color: rgb(90, 90, 90);">User Management</p>
+        <div class = "userLinks" *ngIf="!isLoading">
+                <p>Other management tools are on their way, but here you can manage your users (if you have the proper permissions).</p>
+                <p>Click below to add a new user.</p>
+                <a class="uButton" [routerLink]="['/management/add-user']">Add User</a><br>
+                <div class="uDropdown">
+                        <p>Alternatively, you may view (and edit) an existing user using the dropdown below.</p>
+                        <select id="user"
+                                name="user"
+                                [(ngModel)]="user"
+                                #t
+                                (change)="viewUser()"
+                                required>
+                        <option value=""></option>
+                        <option *ngFor="let user of userList"
+                                [ngValue]="user"><span *ngIf="isFiouse">{{user.company_id}}. </span>{{user.last_name}}, {{user.first_name}}</option>
+                        </select><br>
+                </div>
+        </div>
 </div>
+<div class="footer">
+    <div class="f-copyright">&copy; Copyright Patrick Holley 2017</div>
+    <div class="f-contact">Phone: 029 004 1991<br>
+    Email: contact.fiouse@gmail.com</div>
 </div>

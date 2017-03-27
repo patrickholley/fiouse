@@ -1,3 +1,4 @@
+<div class="loader" *ngIf="isLoading"></div>
 <section [hidden]="isLoading">
 <h3>{{route}} User</h3>
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -76,3 +77,8 @@ To save these changes, please enter your password below and hit "Save".<br>
 <button type=button (click)="onCancel()">Back</button><br>
 </form>
 </section>
+<div class="footer">
+    <div class="f-copyright">&copy; Copyright Patrick Holley 2017</div>
+    <div class="f-contact">Phone: 029 004 1991<br>
+    Email: contact.fiouse@gmail.com</div>
+</div>
