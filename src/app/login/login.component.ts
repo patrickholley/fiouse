@@ -27,9 +27,7 @@ export class LoginComponent {
     this.loginService.login(this.login)
     this.login.username = ''
     this.login.password = ''
-    setTimeout(() => {
-      this.isLoggingIn = false
-    }, 1000)
+    setTimeout(() => this.isLoggingIn = false, 1000)
   }
 
   onContact() {

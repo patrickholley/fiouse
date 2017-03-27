@@ -66,7 +66,7 @@ Password:
         [(ngModel)]="user.password"><br>
 </span>
 <span  class="field">
-Confirm Password:<span [hidden]="!isEdit"></span>
+Confirm Password:
 <input type="password"
         name="cpassword"
         id="cpassword"
@@ -95,6 +95,7 @@ Reports To (Optional): <select id="reports_to"
 </span>
 </div>
 </div>
+<span *ngIf="!isEdit">*: Not required if password should remain the same.</span>
 <div *ngIf="!isView">
 To save these changes, please enter your password below and hit "Save".<br>
 <input type="password"

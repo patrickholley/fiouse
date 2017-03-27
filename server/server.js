@@ -35,7 +35,7 @@ app.post('/api/contact', (req, res) => {
         from: config.email,
         to: 'patrick_holley@outlook.com',
         subject: 'New Fiouse Lead',
-        html: `<div style="border:5px solid #169b62; border-radius:25px; width:500px; padding:25px">
+        html: `<div style="border:5px solid rgb(120, 155, 125); border-radius:25px; width:500px; padding:25px">
         Hello,<br><br>
         You have a new lead waiting for you. Please respond as soon as possible.<br><br>
         <div style="margin-left:25px;">Company: ${req.body.company}<br>

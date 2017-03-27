@@ -1,6 +1,6 @@
 .addBody {
     height: 75vh;
-    min-height: 600px;
+    min-height: 650px;
 }
 
 .addForm {
@@ -17,10 +17,12 @@
 .addForm fieldset {
     border: none;
     padding: 0;
+    margin: 0;
 }
 
 .fButton {
-    margin-bottom: 0;
+    margin: 5px;
+    width: 125px;
 }
 
 .field {
@@ -47,6 +49,7 @@
     border: 1px solid rgb(120, 155, 125);
     border-radius: 10px;
     width: 200px;
+    margin: 0 auto;
 }
 
 @media (max-width: 500px) {
