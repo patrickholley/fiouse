@@ -54,7 +54,7 @@
 
 @media (max-width: 500px) {
     .addBody {
-        min-height: 900px;
+        min-height: 1000px;
     }
     .addForm {
         min-width: 250px;

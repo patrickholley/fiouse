@@ -43,7 +43,7 @@
 .welcomeBox {
     width: 100%;
     height: 80vh;
-    min-height: 400px;
+    min-height: 500px;
     color: rgb(90, 90, 90);
     margin: 0 auto;
     display: flex;
