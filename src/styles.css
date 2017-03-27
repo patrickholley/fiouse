@@ -105,9 +105,3 @@
         flex-direction: column;
     }
 }
-
-@media (max-height:700px) {
-    .footer {
-        margin-top: 200px;
-    }
-}

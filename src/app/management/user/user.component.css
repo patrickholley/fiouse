@@ -1,5 +1,6 @@
 .userBody {
     height: 75vh;
+    min-height: 500px;
 }
 
 .uButton {
