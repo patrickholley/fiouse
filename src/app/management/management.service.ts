@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx'
@@ -9,7 +10,7 @@ export class ManagementService {
   headers: Headers
   user: any
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
     this.headers = new Headers()
     this.headers.append('Content-Type', 'application/json')
   }
@@ -43,18 +44,28 @@ export class ManagementService {
       .catch((this.handleError))
   }
 
-  getEditTeamList() {
+  getEditTeamList(navigate: boolean) {
     return this.http.get(`${ManagementService.BASE_URL}/edit-team/${localStorage.getItem('session_id')}`, {
       headers: this.headers
     }).map((data: Response) => data.json())
-      .catch((this.handleError))
+      .catch(((error) => {
+        alert(error._body)
+        if (navigate) this.router.navigate(['/management/user'])
+        console.log(error)
+        return Observable.throw(error)
+    }))
   }
 
   getViewUserList() {
     return this.http.get(`${ManagementService.BASE_URL}/view-employee/${localStorage.getItem('session_id')}`, {
       headers: this.headers
     }).map((data: Response) => data.json())
-      .catch((this.handleError))
+      .catch(((error) => {
+        alert(error._body)
+        this.router.navigate(['/'])
+        console.log(error)
+        return Observable.throw(error)
+    }))
   }
 
   getReportsToList() {

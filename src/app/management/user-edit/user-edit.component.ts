@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'fio-user-edit',
   templateUrl: '../user-add/user-add.component.html',
-  styleUrls: ['./user-edit.component.css']
+  styleUrls: ['../user-add/user-add.component.css']
 })
 export class UserEditComponent {
   route = "Edit"
@@ -53,7 +53,7 @@ export class UserEditComponent {
   }
 
   onEdit() {
-    this.manageServ.getEditTeamList().subscribe((teams) => {
+    this.manageServ.getEditTeamList(false).subscribe((teams) => {
       this.teamList = teams.sort((a, b) => {
         if (a.company_id < b.company_id) return -1
         else if (b.company_id < a.company_id) return 1
