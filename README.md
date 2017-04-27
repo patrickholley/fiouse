@@ -9,11 +9,17 @@ A video walkthrough is available at the following URL: https://www.youtube.com/w
 You can check out the website yourself, with the video walkthrough as a guide. Before doing so, do the following:
 
 -Go to http://fiouse.com/login
+
 -Log in as oaccbright with the password oaccbright
+
 -Go to Management at the top
+
 -Find "Estelle Bright" in the dropdown in the middle of the screen
+
 -Click "Edit"
+
 -Ensure Estelle's Team is "Rolent" (not "Rolent Power")
+
 -Logout
 
 The two accounts you'll need to follow the video is the above oaccbright credentials as well as oacebright, with oacebright as the password.
