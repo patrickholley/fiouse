@@ -14,11 +14,13 @@ You can check out the website yourself, with the video walkthrough as a guide. B
 
 -Go to Management at the top
 
--Find "Estelle Bright" in the dropdown in the middle of the screen
+-Find "Estelle Bright" in the dropdown at the middle of the screen
 
 -Click "Edit"
 
 -Ensure Estelle's Team is "Rolent" (not "Rolent Power")
+
+-If needed, enter your password and save the team change.
 
 -Logout
 
