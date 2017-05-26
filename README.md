@@ -8,7 +8,7 @@ A video walkthrough is available at the following URL: https://www.youtube.com/w
 
 You can check out the website yourself, with the video walkthrough as a guide. Before doing so, do the following:
 
--Go to http://fiouse.com/login
+-Go to http://fiouse.com/
 
 -Log in as oaccbright with the password oaccbright
 
