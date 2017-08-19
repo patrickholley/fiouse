@@ -4,28 +4,4 @@ This project was an exercise to see how well I could implement technologies I ha
 
 Fiouse is a website that allows companies to organize their employees into teams. Teams determine what level of permissions an employee will have within the company, such as the ability to edit other profiles and create new users.
 
-A video walkthrough is available at the following URL: https://www.youtube.com/watch?v=YzbGTRoMtpY&t=5s
-
-You can check out the website yourself, with the video walkthrough as a guide. Before doing so, do the following:
-
--Go to http://fiouse.com/
-
--Log in as oaccbright with the password oaccbright
-
--Go to Management at the top
-
--Find "Estelle Bright" in the dropdown at the middle of the screen
-
--Click "Edit"
-
--Ensure Estelle's Team is "Rolent" (not "Rolent Power")
-
--If needed, enter your password and save the team change.
-
--Logout
-
-The two accounts you'll need to follow the video is the above oaccbright credentials as well as oacebright, with oacebright as the password.
-
-Please avoid adding or deleting users, but if you must at least contact me at patrick_holley@outlook.com after doing such so I can make sure to reset the data.
-
-Thank you for checking out my website!
+This website is now offline and can no longer be viewed. However, a video walkthrough is available at the following URL: https://www.youtube.com/watch?v=YzbGTRoMtpY&t=5s
